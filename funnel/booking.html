@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Book Your Strategy Call — Investment Bricks</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --orange: #FD7014;
+      --peach: #F3995F;
+      --charcoal: #333333;
+      --cream: #FAF9F5;
+      --lightgrey: #F7F7F7;
+      --mutedblue: #858B9F;
+      --white: #FFFFFF;
+    }
+
+    body {
+      font-family: 'Montserrat', Arial, sans-serif;
+      background: var(--cream);
+      color: var(--charcoal);
+      font-size: 16px;
+      line-height: 1.8;
+    }
+
+    /* ── TOP BAR ── */
+    .top-bar {
+      background: var(--peach);
+      padding: 10px 24px;
+      text-align: center;
+      color: var(--white);
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.03em;
+    }
+    .top-bar a { color: var(--white); text-decoration: none; font-weight: 700; }
+
+    /* ── HEADER ── */
+    header {
+      background: var(--white);
+      padding: 18px 24px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-bottom: 1px solid #eee;
+    }
+    header img { height: 56px; width: auto; object-fit: contain; }
+
+    /* ── PROGRESS INDICATOR ── */
+    .progress-nav {
+      background: var(--white);
+      border-bottom: 1px solid #eee;
+      padding: 16px 24px;
+      display: flex;
+      justify-content: center;
+    }
+    .progress-steps {
+      display: flex;
+      align-items: center;
+      gap: 0;
+    }
+    .p-step {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      color: #ccc;
+    }
+    .p-step.done { color: var(--orange); }
+    .p-step.active { color: var(--charcoal); }
+    .p-step .p-circle {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      border: 2px solid #ddd;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 700;
+    }
+    .p-step.done .p-circle {
+      background: var(--orange);
+      border-color: var(--orange);
+      color: var(--white);
+    }
+    .p-step.active .p-circle {
+      border-color: var(--orange);
+      color: var(--orange);
+    }
+    .p-divider {
+      width: 48px;
+      height: 2px;
+      background: #e8e8e8;
+      margin: 0 4px;
+    }
+    .p-divider.done { background: var(--orange); }
+    @media (max-width: 480px) {
+      .p-step span { display: none; }
+      .p-divider { width: 28px; }
+    }
+
+    /* ── HERO BANNER ── */
+    .booking-hero {
+      background: linear-gradient(135deg, var(--orange) 0%, #c85500 100%);
+      padding: 52px 24px;
+      text-align: center;
+    }
+    .booking-hero .emoji { font-size: 40px; display: block; margin-bottom: 16px; }
+    .booking-hero h1 {
+      font-size: clamp(24px, 3.5vw, 38px);
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.2;
+      margin-bottom: 12px;
+    }
+    .booking-hero p {
+      font-size: 17px;
+      color: rgba(255,255,255,0.9);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* ── MAIN CONTENT ── */
+    .booking-wrap {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 56px 24px;
+      display: grid;
+      grid-template-columns: 1fr 340px;
+      gap: 48px;
+      align-items: start;
+    }
+    @media (max-width: 760px) {
+      .booking-wrap { grid-template-columns: 1fr; }
+      .booking-sidebar { order: -1; }
+    }
+
+    /* ── WHAT HAPPENS ── */
+    .section-eyebrow {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--peach);
+      margin-bottom: 8px;
+    }
+    .section-h2 {
+      font-size: clamp(20px, 2.5vw, 28px);
+      font-weight: 700;
+      color: var(--charcoal);
+      margin-bottom: 24px;
+    }
+    .section-h2 span { color: var(--orange); }
+
+    .what-happens { margin-bottom: 40px; }
+    .wh-item {
+      display: flex;
+      gap: 18px;
+      padding: 20px 0;
+      border-bottom: 1px solid #e8e8e8;
+    }
+    .wh-item:last-child { border-bottom: none; }
+    .wh-icon {
+      flex-shrink: 0;
+      font-size: 26px;
+      width: 50px;
+      height: 50px;
+      background: #FFF5EE;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .wh-text strong {
+      display: block;
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--charcoal);
+      margin-bottom: 4px;
+    }
+    .wh-text span {
+      font-size: 14px;
+      color: #555;
+      line-height: 1.7;
+    }
+
+    /* Guarantee */
+    .guarantee-box {
+      background: #FFF5EE;
+      border-left: 4px solid var(--orange);
+      border-radius: 6px;
+      padding: 24px;
+      margin-bottom: 0;
+    }
+    .guarantee-box h4 {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--charcoal);
+      margin-bottom: 8px;
+    }
+    .guarantee-box p {
+      font-size: 14px;
+      color: #555;
+      line-height: 1.7;
+    }
+    .guarantee-box .g-badges {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-top: 16px;
+    }
+    .g-badge {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--charcoal);
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    /* ── SIDEBAR ── */
+    .booking-sidebar { position: sticky; top: 24px; }
+
+    .call-details-card {
+      background: var(--white);
+      border-radius: 8px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.09);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .cd-header {
+      background: var(--charcoal);
+      padding: 20px 24px;
+      text-align: center;
+    }
+    .cd-header h3 {
+      color: var(--white);
+      font-size: 15px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    .cd-header p {
+      color: rgba(255,255,255,0.7);
+      font-size: 13px;
+      margin-top: 4px;
+    }
+    .cd-body { padding: 24px; }
+    .cd-item {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 12px 0;
+      border-bottom: 1px solid #f0f0f0;
+    }
+    .cd-item:last-child { border-bottom: none; }
+    .cd-icon { font-size: 20px; flex-shrink: 0; width: 36px; text-align: center; }
+    .cd-label { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--mutedblue); display: block; }
+    .cd-value { font-size: 14px; font-weight: 600; color: var(--charcoal); display: block; }
+
+    /* Calendly embed placeholder */
+    .calendar-card {
+      background: var(--white);
+      border-radius: 8px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.09);
+      overflow: hidden;
+    }
+    .calendar-header {
+      background: var(--orange);
+      padding: 18px 24px;
+      text-align: center;
+    }
+    .calendar-header h3 {
+      color: var(--white);
+      font-size: 15px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    .calendly-placeholder {
+      padding: 32px 24px;
+      text-align: center;
+    }
+    .calendly-placeholder p {
+      font-size: 14px;
+      color: var(--mutedblue);
+      margin-bottom: 20px;
+    }
+    .book-btn {
+      display: block;
+      width: 100%;
+      padding: 16px;
+      background: var(--orange);
+      color: var(--white);
+      border: none;
+      border-radius: 6px;
+      font-family: 'Montserrat', Arial, sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      cursor: pointer;
+      text-decoration: none;
+      text-align: center;
+      transition: background 0.2s, transform 0.1s;
+    }
+    .book-btn:hover { background: #e05f00; transform: translateY(-1px); }
+    .book-btn:active { transform: translateY(0); }
+
+    .skip-link {
+      display: block;
+      text-align: center;
+      margin-top: 12px;
+      font-size: 13px;
+      color: var(--mutedblue);
+      text-decoration: none;
+    }
+    .skip-link:hover { color: var(--orange); text-decoration: underline; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--charcoal);
+      padding: 40px 24px;
+      text-align: center;
+    }
+    footer img { height: 44px; width: auto; object-fit: contain; margin-bottom: 16px; filter: brightness(0) invert(1); }
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+    .footer-links a {
+      font-size: 13px;
+      color: rgba(255,255,255,0.6);
+      text-decoration: none;
+    }
+    .footer-links a:hover { color: var(--peach); }
+    footer p { font-size: 12px; color: rgba(255,255,255,0.4); }
+  </style>
+</head>
+<body>
+
+  <!-- TOP BAR -->
+  <div class="top-bar">
+    📞 <a href="tel:0408827357">0408 827 357</a> &nbsp;|&nbsp; lucio@investmentbricks.com.au
+  </div>
+
+  <!-- HEADER -->
+  <header>
+    <img src="../Assets/Investment Bricks Logo.jpg" alt="Investment Bricks" />
+  </header>
+
+  <!-- PROGRESS -->
+  <div class="progress-nav">
+    <div class="progress-steps">
+      <div class="p-step done">
+        <div class="p-circle">✓</div>
+        <span>Your Details</span>
+      </div>
+      <div class="p-divider done"></div>
+      <div class="p-step active">
+        <div class="p-circle">2</div>
+        <span>Book Call</span>
+      </div>
+      <div class="p-divider"></div>
+      <div class="p-step">
+        <div class="p-circle">3</div>
+        <span>Confirmed</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <div class="booking-hero">
+    <span class="emoji">🎉</span>
+    <h1>Blueprint on its way, Investor!</h1>
+    <p>Check your inbox — your Duplex Investment Blueprint is heading to you now. While you wait, book a free 30-minute strategy call and let's map out your path to duplex ownership.</p>
+  </div>
+
+  <!-- BOOKING CONTENT -->
+  <div class="booking-wrap">
+
+    <!-- LEFT: What Happens on the Call -->
+    <div class="booking-main">
+      <div class="section-eyebrow">Your Free Strategy Call</div>
+      <h2 class="section-h2">What We'll Cover <span>Together</span></h2>
+
+      <div class="what-happens">
+        <div class="wh-item">
+          <div class="wh-icon">🗺️</div>
+          <div class="wh-text">
+            <strong>Your Investment Roadmap</strong>
+            <span>We'll assess your current position — equity, borrowing capacity, income — and show you the realistic paths to duplex ownership based on your exact numbers.</span>
+          </div>
+        </div>
+        <div class="wh-item">
+          <div class="wh-icon">🏘️</div>
+          <div class="wh-text">
+            <strong>Live Duplex Opportunities</strong>
+            <span>Get early access to off-market duplex sites we have available right now — including yield estimates, suburb analysis, and build timelines not available anywhere else.</span>
+          </div>
+        </div>
+        <div class="wh-item">
+          <div class="wh-icon">💰</div>
+          <div class="wh-text">
+            <strong>Finance Structure Strategy</strong>
+            <span>We'll walk you through how to structure your loan across both dwellings to maximise cash flow, protect your equity, and set you up for property number two.</span>
+          </div>
+        </div>
+        <div class="wh-item">
+          <div class="wh-icon">❓</div>
+          <div class="wh-text">
+            <strong>All Your Questions Answered</strong>
+            <span>Yields, timelines, council approvals, property management, tax implications — bring every question and we'll give you straight, unbiased answers with no pressure.</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Zero Pressure Guarantee -->
+      <div class="guarantee-box">
+        <h4>🤝 Our Zero Pressure Guarantee</h4>
+        <p>This call is about education and clarity — not a sales pitch. Investment Bricks is independently operated, so you'll receive honest, data-driven advice that's 100% in your interest. No close, no pressure, no obligation.</p>
+        <div class="g-badges">
+          <div class="g-badge">🔒 Secure &amp; private</div>
+          <div class="g-badge">⚡ Instant confirmation</div>
+          <div class="g-badge">🚫 Cancel anytime</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SIDEBAR: Call Details + CTA -->
+    <div class="booking-sidebar">
+
+      <div class="call-details-card">
+        <div class="cd-header">
+          <h3>Call Details</h3>
+          <p>What to expect</p>
+        </div>
+        <div class="cd-body">
+          <div class="cd-item">
+            <div class="cd-icon">📞</div>
+            <div>
+              <span class="cd-label">Format</span>
+              <span class="cd-value">Phone or video — your choice</span>
+            </div>
+          </div>
+          <div class="cd-item">
+            <div class="cd-icon">⏱️</div>
+            <div>
+              <span class="cd-label">Duration</span>
+              <span class="cd-value">30 minutes</span>
+            </div>
+          </div>
+          <div class="cd-item">
+            <div class="cd-icon">💵</div>
+            <div>
+              <span class="cd-label">Cost</span>
+              <span class="cd-value">Completely free</span>
+            </div>
+          </div>
+          <div class="cd-item">
+            <div class="cd-icon">👤</div>
+            <div>
+              <span class="cd-label">Your Advisor</span>
+              <span class="cd-value">Lucio — Investment Bricks</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="calendar-card">
+        <div class="calendar-header">
+          <h3>Choose Your Time</h3>
+        </div>
+        <div class="calendly-placeholder">
+          <p>Select a time that works for you. Instant calendar confirmation sent to your inbox.</p>
+          <!-- Replace this button's href with your Calendly / booking link -->
+          <a href="confirmation.html" class="book-btn">Book My Strategy Call →</a>
+          <a href="confirmation.html" class="skip-link">Skip for now — take me to confirmation →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <img src="../Assets/Investment Bricks Logo.jpg" alt="Investment Bricks" />
+    <div class="footer-links">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Use</a>
+      <a href="https://investmentbricks.com.au" target="_blank">investmentbricks.com.au</a>
+    </div>
+    <p>Lucio: 0408 827 357 | lucio@investmentbricks.com.au | Adelaide, Australia</p>
+    <p style="margin-top:8px;">© 2025 Investment Bricks. All rights reserved. New Property Specialists.</p>
+  </footer>
+
+</body>
+</html>
