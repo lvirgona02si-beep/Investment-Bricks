@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>The Duplex Investment Blueprint — Investment Bricks</title>
+  <title>The Duplex Investment roadmap — Investment Bricks</title>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -157,14 +157,14 @@
       line-height: 1.8;
     }
 
-    .blueprint-list { list-style: none; margin-bottom: 40px; }
-    .blueprint-list li {
+    .roadmap-list { list-style: none; margin-bottom: 40px; }
+    .roadmap-list li {
       display: flex;
       gap: 16px;
       padding: 18px 0;
       border-bottom: 1px solid #e8e8e8;
     }
-    .blueprint-list li:last-child { border-bottom: none; }
+    .roadmap-list li:last-child { border-bottom: none; }
     .bp-num {
       flex-shrink: 0;
       width: 36px;
@@ -527,7 +527,7 @@
   <section class="hero">
     <div class="hero-inner">
       <div class="hero-badge">Free Download</div>
-      <h1>The Duplex Investment<br /><span>Blueprint</span></h1>
+      <h1>The Duplex Investment<br /><span>roadmap</span></h1>
       <p>How Australian Property Investors Are Generating <strong style="color:#FD7014;">Dual Rental Income</strong> on a Single Block — and Building Equity Faster Than Any Other Strategy</p>
       <div class="hero-meta">
         <span>No cost</span>
@@ -550,12 +550,12 @@
 
     <!-- LEFT CONTENT -->
     <div class="content-col">
-      <h2>Inside the Blueprint</h2>
+      <h2>Inside the roadmap</h2>
       <p class="intro-text">
         Duplexes are one of Australia's most powerful investment strategies — two income streams, one land parcel, and significantly stronger equity growth. This free guide cuts through the noise and gives you a clear, step-by-step roadmap to duplex ownership.
       </p>
 
-      <ul class="blueprint-list">
+      <ul class="roadmap-list">
         <li>
           <div class="bp-num">1</div>
           <div class="bp-text">
@@ -598,7 +598,7 @@
     <div class="form-col">
       <div class="form-card">
         <div class="form-header">
-          <h3>Get Your Free Blueprint</h3>
+          <h3>Get Your Free roadmap</h3>
           <p>Answer 3 quick questions, then instant access</p>
         </div>
         <div class="form-body">
@@ -649,7 +649,7 @@
 
           <!-- Step 4 -->
           <div class="form-step" id="step4">
-            <p class="step-question">Where should we send your Blueprint?</p>
+            <p class="step-question">Where should we send your roadmap?</p>
             <div class="form-group">
               <label>First Name</label>
               <input type="text" id="fname" placeholder="Your first name" />
@@ -662,7 +662,7 @@
               <label>Phone Number</label>
               <input type="tel" id="phone" placeholder="04XX XXX XXX" />
             </div>
-            <button class="submit-btn" onclick="submitForm()">Send My Blueprint →</button>
+            <button class="submit-btn" onclick="submitForm()">Send My roadmap →</button>
             <div class="privacy-note">🔒 Your details are 100% private. No spam, ever.</div>
             <button class="back-link" onclick="goBack(3)">← Go back</button>
           </div>
@@ -773,7 +773,7 @@
           Is duplex development legal across all Australian states?
           <span class="faq-icon">+</span>
         </div>
-        <div class="faq-a">Yes, duplex development is legal across all Australian states, but planning rules vary by council. Key considerations include minimum lot size, R-code zoning, and setback requirements. Our Blueprint outlines the state-by-state rules in detail so you know exactly where the most investor-friendly opportunities exist right now.</div>
+        <div class="faq-a">Yes, duplex development is legal across all Australian states, but planning rules vary by council. Key considerations include minimum lot size, R-code zoning, and setback requirements. Our roadmap outlines the state-by-state rules in detail so you know exactly where the most investor-friendly opportunities exist right now.</div>
       </div>
 
       <div class="faq-item">
@@ -789,7 +789,7 @@
           What kind of rental yields can I expect from a duplex?
           <span class="faq-icon">+</span>
         </div>
-        <div class="faq-a">Duplex investments in strong-demand corridors are currently delivering gross rental yields of 5.5–7.5% in many markets, compared to 3.5–4.5% for comparable single-dwelling properties. The Blueprint includes real examples of current Investment Bricks projects with detailed yield breakdowns.</div>
+        <div class="faq-a">Duplex investments in strong-demand corridors are currently delivering gross rental yields of 5.5–7.5% in many markets, compared to 3.5–4.5% for comparable single-dwelling properties. The roadmap includes real examples of current Investment Bricks projects with detailed yield breakdowns.</div>
       </div>
 
       <div class="faq-item">
@@ -863,7 +863,7 @@
       const email = document.getElementById('email').value.trim();
       const phone = document.getElementById('phone').value.trim();
       if (!fname || !email || !phone) {
-        alert('Please fill in all fields to receive your Blueprint.');
+        alert('Please fill in all fields to receive your roadmap.');
         return;
       }
       window.location.href = 'booking.html?name=' + encodeURIComponent(fname);
