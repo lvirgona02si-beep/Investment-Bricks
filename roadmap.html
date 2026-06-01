@@ -1,0 +1,1573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Duplex Investment Roadmap — Investment Bricks</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    /* ── Reset ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --orange:   #FD7014;
+      --peach:    #F3995F;
+      --charcoal: #333333;
+      --dark:     #1e1e1e;
+      --cream:    #FAF9F5;
+      --lgrey:    #F4F4F4;
+      --mgrey:    #E0E0E0;
+      --muted:    #858B9F;
+      --white:    #FFFFFF;
+      --pg-w:     794px;   /* A4 at 96 dpi */
+      --pg-h:     1123px;
+    }
+
+    body {
+      font-family: 'Montserrat', Arial, sans-serif;
+      background: #2a2a2a;
+      color: var(--charcoal);
+      font-size: 13px;
+      line-height: 1.7;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    /* ── Screen wrapper ── */
+    .pages {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 24px;
+      padding: 32px 16px;
+    }
+
+    /* ── Page base ── */
+    .page {
+      width: var(--pg-w);
+      min-height: var(--pg-h);
+      background: var(--white);
+      box-shadow: 0 4px 32px rgba(0,0,0,0.35);
+      position: relative;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+
+    /* ── Print ── */
+    @media print {
+      body { background: white; }
+      .pages { gap: 0; padding: 0; }
+      .page {
+        width: 210mm;
+        min-height: 297mm;
+        page-break-after: always;
+        box-shadow: none;
+      }
+      .no-print { display: none !important; }
+    }
+
+    /* ══════════════════════════════════════════════════════
+       PAGE 1 — COVER
+    ══════════════════════════════════════════════════════ */
+    .cover {
+      background: var(--dark);
+      display: flex;
+      flex-direction: column;
+    }
+    .cover-image {
+      position: absolute;
+      inset: 0;
+      background: url('Assets/Screenshot-2026-05-21-073802.png') center/cover no-repeat;
+      opacity: 0.22;
+    }
+    .cover-gradient {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(160deg, rgba(30,30,30,0.92) 0%, rgba(253,112,20,0.18) 60%, rgba(30,30,30,0.96) 100%);
+    }
+    .cover-inner {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      height: var(--pg-h);
+      padding: 52px 56px;
+    }
+    .cover-logo img {
+      height: 52px;
+      width: auto;
+      object-fit: contain;
+      background: white;
+      padding: 8px 14px;
+      border-radius: 6px;
+    }
+    .cover-tag {
+      margin-top: auto;
+      display: inline-block;
+      background: var(--orange);
+      color: white;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 6px 16px;
+      border-radius: 3px;
+      width: fit-content;
+      margin-bottom: 20px;
+    }
+    .cover h1 {
+      font-size: 54px;
+      font-weight: 800;
+      color: var(--white);
+      line-height: 1.05;
+      text-transform: uppercase;
+      letter-spacing: -0.01em;
+      margin-bottom: 8px;
+    }
+    .cover h1 span { color: var(--orange); }
+    .cover-subtitle {
+      font-size: 15px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.75);
+      max-width: 480px;
+      line-height: 1.65;
+      margin-bottom: 40px;
+    }
+    .cover-stats {
+      display: flex;
+      gap: 32px;
+      margin-bottom: 48px;
+    }
+    .cover-stat {
+      border-left: 3px solid var(--orange);
+      padding-left: 14px;
+    }
+    .cover-stat .num {
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--white);
+      line-height: 1;
+    }
+    .cover-stat .lbl {
+      font-size: 10px;
+      font-weight: 600;
+      color: rgba(255,255,255,0.55);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-top: 3px;
+    }
+    .cover-footer {
+      margin-top: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      padding-top: 24px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+    .cover-footer p {
+      font-size: 10px;
+      color: rgba(255,255,255,0.35);
+      line-height: 1.6;
+    }
+    .cover-footer .edition {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--peach);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    /* ══════════════════════════════════════════════════════
+       INNER PAGE CHROME
+    ══════════════════════════════════════════════════════ */
+    .inner-header {
+      background: var(--orange);
+      padding: 14px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .inner-header img {
+      height: 30px;
+      width: auto;
+      object-fit: contain;
+      background: white;
+      padding: 4px 10px;
+      border-radius: 4px;
+    }
+    .inner-header .doc-title {
+      font-size: 9px;
+      font-weight: 700;
+      color: rgba(255,255,255,0.8);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    .inner-footer {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 12px 40px;
+      background: var(--lgrey);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid var(--mgrey);
+    }
+    .inner-footer p {
+      font-size: 8px;
+      color: var(--muted);
+      letter-spacing: 0.04em;
+    }
+    .inner-footer .pg-num {
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--orange);
+    }
+
+    .page-content {
+      padding: 36px 40px 60px;
+    }
+
+    /* ── Chapter label ── */
+    .chapter-label {
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--peach);
+      margin-bottom: 6px;
+    }
+    .chapter-heading {
+      font-size: 26px;
+      font-weight: 800;
+      color: var(--charcoal);
+      line-height: 1.15;
+      margin-bottom: 6px;
+    }
+    .chapter-heading span { color: var(--orange); }
+    .chapter-rule {
+      width: 48px;
+      height: 3px;
+      background: var(--orange);
+      border-radius: 2px;
+      margin-bottom: 20px;
+    }
+
+    /* ── Body text ── */
+    .body-text {
+      font-size: 12.5px;
+      color: #444;
+      line-height: 1.8;
+      margin-bottom: 14px;
+    }
+    .body-text strong { color: var(--charcoal); }
+
+    /* ── Stat boxes ── */
+    .stat-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin: 20px 0;
+    }
+    .stat-box {
+      background: var(--lgrey);
+      border-radius: 6px;
+      padding: 18px 16px;
+      text-align: center;
+      border-top: 3px solid var(--orange);
+    }
+    .stat-box .s-num {
+      font-size: 30px;
+      font-weight: 800;
+      color: var(--orange);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .stat-box .s-label {
+      font-size: 10px;
+      font-weight: 600;
+      color: var(--charcoal);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      line-height: 1.4;
+    }
+    .stat-box .s-source {
+      font-size: 8.5px;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+
+    .stat-row-2 { grid-template-columns: repeat(2, 1fr); }
+    .stat-row-4 { grid-template-columns: repeat(4, 1fr); }
+
+    /* ── Callout box ── */
+    .callout {
+      background: #FFF5EE;
+      border-left: 4px solid var(--orange);
+      border-radius: 0 6px 6px 0;
+      padding: 16px 20px;
+      margin: 16px 0;
+    }
+    .callout p { font-size: 12px; color: var(--charcoal); line-height: 1.7; }
+    .callout strong { color: var(--orange); }
+
+    /* ── Tables ── */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 11.5px;
+      margin: 14px 0;
+    }
+    thead th {
+      background: var(--charcoal);
+      color: var(--white);
+      padding: 9px 12px;
+      text-align: left;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    thead th:first-child { border-radius: 4px 0 0 0; }
+    thead th:last-child { border-radius: 0 4px 0 0; }
+    tbody tr:nth-child(even) { background: var(--lgrey); }
+    tbody tr:nth-child(odd) { background: var(--white); }
+    tbody td {
+      padding: 9px 12px;
+      color: var(--charcoal);
+      border-bottom: 1px solid var(--mgrey);
+    }
+    tbody td strong { color: var(--orange); }
+    .tick { color: #2e9e4f; font-weight: 700; }
+    .cross { color: #c0392b; font-weight: 700; }
+
+    /* ── Two-column layout ── */
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    .two-col-60 { display: grid; grid-template-columns: 60% 1fr; gap: 24px; }
+
+    /* ── Case study card ── */
+    .case-card {
+      background: var(--charcoal);
+      border-radius: 8px;
+      padding: 22px 24px;
+      color: white;
+      margin: 16px 0;
+    }
+    .case-card h4 {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--peach);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 14px;
+    }
+    .case-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 7px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      font-size: 12px;
+    }
+    .case-row:last-child { border-bottom: none; }
+    .case-row .c-label { color: rgba(255,255,255,0.6); }
+    .case-row .c-val { font-weight: 700; color: white; }
+    .case-row .c-val.highlight { color: var(--orange); font-size: 14px; }
+    .case-total {
+      display: flex;
+      justify-content: space-between;
+      background: var(--orange);
+      margin: 12px -24px -22px;
+      padding: 12px 24px;
+      border-radius: 0 0 8px 8px;
+    }
+    .case-total .c-label { color: rgba(255,255,255,0.85); font-weight: 600; font-size: 12px; }
+    .case-total .c-val { font-weight: 800; font-size: 16px; color: white; }
+
+    /* ── Zoning card ── */
+    .zone-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 10px;
+      margin: 16px 0;
+    }
+    .zone-card {
+      background: var(--lgrey);
+      border-radius: 6px;
+      padding: 14px 10px;
+      text-align: center;
+      border-top: 3px solid var(--orange);
+    }
+    .zone-card .state {
+      font-size: 16px;
+      font-weight: 800;
+      color: var(--orange);
+      margin-bottom: 6px;
+    }
+    .zone-card .zone-name {
+      font-size: 9px;
+      font-weight: 700;
+      color: var(--charcoal);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 6px;
+    }
+    .zone-card .zone-detail {
+      font-size: 9px;
+      color: #555;
+      line-height: 1.5;
+    }
+    .zone-card .zone-yield {
+      margin-top: 8px;
+      font-size: 13px;
+      font-weight: 800;
+      color: var(--orange);
+    }
+    .zone-card .zone-yield-lbl {
+      font-size: 8px;
+      color: var(--muted);
+    }
+
+    /* ── Timeline ── */
+    .timeline { margin: 16px 0; }
+    .tl-item {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 14px;
+    }
+    .tl-left {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      flex-shrink: 0;
+      width: 40px;
+    }
+    .tl-dot {
+      width: 36px;
+      height: 36px;
+      background: var(--orange);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: 800;
+      color: white;
+      flex-shrink: 0;
+    }
+    .tl-line {
+      width: 2px;
+      flex: 1;
+      background: var(--mgrey);
+      min-height: 20px;
+    }
+    .tl-content {
+      padding-top: 6px;
+      padding-bottom: 14px;
+    }
+    .tl-content strong {
+      display: block;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--charcoal);
+      margin-bottom: 2px;
+    }
+    .tl-content span { font-size: 11.5px; color: #555; line-height: 1.6; }
+    .tl-content .tl-duration {
+      display: inline-block;
+      background: var(--orange);
+      color: white;
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      padding: 2px 8px;
+      border-radius: 10px;
+      margin-bottom: 4px;
+    }
+
+    /* ── Green tick list ── */
+    .tick-list { list-style: none; margin: 10px 0; }
+    .tick-list li {
+      display: flex;
+      gap: 8px;
+      align-items: flex-start;
+      font-size: 12px;
+      color: #444;
+      margin-bottom: 7px;
+      line-height: 1.6;
+    }
+    .tick-list li::before {
+      content: '✓';
+      color: var(--orange);
+      font-weight: 700;
+      flex-shrink: 0;
+      font-size: 13px;
+      margin-top: 0px;
+    }
+
+    /* ── FAQ ── */
+    .faq-item { margin-bottom: 14px; }
+    .faq-q {
+      font-size: 12.5px;
+      font-weight: 700;
+      color: var(--charcoal);
+      margin-bottom: 4px;
+    }
+    .faq-q::before { content: 'Q  '; color: var(--orange); }
+    .faq-a {
+      font-size: 12px;
+      color: #555;
+      line-height: 1.7;
+      padding-left: 20px;
+    }
+
+    /* ── Property image ── */
+    .prop-img {
+      width: 100%;
+      border-radius: 6px;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* ── Back cover ── */
+    .back-cover {
+      background: var(--orange);
+      display: flex;
+      flex-direction: column;
+    }
+    .back-inner {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      height: var(--pg-h);
+      padding: 56px;
+    }
+    .back-cover-image {
+      position: absolute;
+      inset: 0;
+      background: url('Assets/Photo-1.jpeg') center/cover no-repeat;
+      opacity: 0.12;
+    }
+    .back-tag {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 20px;
+    }
+    .back-cover h2 {
+      font-size: 42px;
+      font-weight: 800;
+      color: white;
+      line-height: 1.1;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+    .back-cover .back-sub {
+      font-size: 15px;
+      color: rgba(255,255,255,0.85);
+      max-width: 460px;
+      line-height: 1.7;
+      margin-bottom: 36px;
+    }
+    .back-steps {
+      display: flex;
+      gap: 28px;
+      margin-bottom: 48px;
+    }
+    .back-step {
+      background: rgba(255,255,255,0.15);
+      border-radius: 8px;
+      padding: 18px 20px;
+      flex: 1;
+    }
+    .back-step .bs-num {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      color: rgba(255,255,255,0.6);
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+    .back-step .bs-text {
+      font-size: 13px;
+      font-weight: 700;
+      color: white;
+      line-height: 1.4;
+    }
+    .contact-row {
+      display: flex;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .contact-item .ci-icon {
+      width: 36px;
+      height: 36px;
+      background: rgba(255,255,255,0.2);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+    }
+    .contact-item .ci-label {
+      font-size: 9px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: rgba(255,255,255,0.6);
+    }
+    .contact-item .ci-val {
+      font-size: 12.5px;
+      font-weight: 700;
+      color: white;
+    }
+    .back-logo-wrap {
+      margin-top: auto;
+    }
+    .back-logo-wrap img {
+      height: 46px;
+      width: auto;
+      object-fit: contain;
+      background: white;
+      padding: 8px 14px;
+      border-radius: 6px;
+    }
+    .back-disclaimer {
+      font-size: 8.5px;
+      color: rgba(255,255,255,0.4);
+      margin-top: 20px;
+      line-height: 1.6;
+    }
+
+    /* ── Print CTA bar ── */
+    .print-bar {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 100;
+      display: flex;
+      gap: 10px;
+    }
+    .print-btn {
+      background: var(--orange);
+      color: white;
+      border: none;
+      padding: 14px 24px;
+      border-radius: 6px;
+      font-family: 'Montserrat', Arial, sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 4px 20px rgba(253,112,20,0.5);
+      letter-spacing: 0.04em;
+    }
+    .print-btn:hover { background: #e05f00; }
+
+    /* ── Income highlight bar ── */
+    .income-bar {
+      background: var(--charcoal);
+      border-radius: 8px;
+      padding: 20px 24px;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      margin: 16px 0;
+    }
+    .income-item { text-align: center; }
+    .income-item .i-label {
+      font-size: 9px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 4px;
+    }
+    .income-item .i-val {
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--orange);
+    }
+    .income-item .i-sub {
+      font-size: 9px;
+      color: rgba(255,255,255,0.4);
+      margin-top: 2px;
+    }
+    .income-divider {
+      width: 1px;
+      height: 48px;
+      background: rgba(255,255,255,0.1);
+    }
+
+    /* ── Section break ── */
+    .section-divider {
+      border: none;
+      border-top: 1px solid var(--mgrey);
+      margin: 18px 0;
+    }
+
+    /* ── Small orange badge ── */
+    .badge {
+      display: inline-block;
+      background: var(--orange);
+      color: white;
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 10px;
+      margin-left: 6px;
+      vertical-align: middle;
+    }
+    .badge-green {
+      background: #2e9e4f;
+    }
+
+    /* ── Two-tone section ── */
+    .section-orange {
+      background: var(--orange);
+      border-radius: 8px;
+      padding: 18px 20px;
+      color: white;
+      margin: 12px 0;
+    }
+    .section-orange h5 {
+      font-size: 12px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+    .section-orange p { font-size: 11.5px; color: rgba(255,255,255,0.88); line-height: 1.65; }
+
+    .note {
+      font-size: 9px;
+      color: var(--muted);
+      font-style: italic;
+      margin-top: 6px;
+    }
+  </style>
+</head>
+<body>
+
+<!-- ────────────── PRINT CTA ────────────── -->
+<div class="print-bar no-print">
+  <button class="print-btn" onclick="window.print()">⬇ Save as PDF</button>
+</div>
+
+<div class="pages">
+
+<!-- ════════════════════════════════════════════════════════════
+  PAGE 1 — COVER
+════════════════════════════════════════════════════════════ -->
+<section class="page cover">
+  <div class="cover-image"></div>
+  <div class="cover-gradient"></div>
+  <div class="cover-inner">
+    <div class="cover-logo">
+      <img src="Investment%20Bricks%20Logo.jpg" alt="Investment Bricks" />
+    </div>
+
+    <div class="cover-tag">Free Investor Roadmap · 2025 Edition</div>
+    <h1>The Duplex<br /><span>Investment</span><br />Roadmap</h1>
+    <p class="cover-subtitle">Your step-by-step guide to building dual income property wealth in Australia — from site selection to key handover.</p>
+
+    <div class="cover-stats">
+      <div class="cover-stat">
+        <div class="num">1.2M</div>
+        <div class="lbl">New homes needed<br/>by 2029 (National<br/>Housing Accord)</div>
+      </div>
+      <div class="cover-stat">
+        <div class="num">&lt;1.5%</div>
+        <div class="lbl">National rental<br/>vacancy rate<br/>(PropTrack 2025)</div>
+      </div>
+      <div class="cover-stat">
+        <div class="num">6–8%</div>
+        <div class="lbl">Typical duplex<br/>gross yield in<br/>growth corridors</div>
+      </div>
+    </div>
+
+    <div class="cover-footer">
+      <p>Prepared by Investment Bricks Pty Ltd<br/>Adelaide, South Australia · investmentbricks.com.au<br/>Lucio: 0408 827 357 | lucio@investmentbricks.com.au</p>
+      <span class="edition">2025 Edition</span>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════════════════════
+  PAGE 2 — WELCOME
+════════════════════════════════════════════════════════════ -->
+<section class="page">
+  <div class="inner-header">
+    <img src="Investment%20Bricks%20Logo.jpg" alt="Investment Bricks" />
+    <span class="doc-title">The Duplex Investment Roadmap · Investment Bricks</span>
+  </div>
+  <div class="page-content">
+
+    <div class="chapter-label">Welcome</div>
+    <div class="chapter-heading">A Message From <span>Lucio</span></div>
+    <div class="chapter-rule"></div>
+
+    <p class="body-text">
+      Dear Investor,
+    </p>
+    <p class="body-text">
+      Thank you for downloading the Investment Bricks <strong>Duplex Investment Roadmap</strong>. Whether you're a first-time investor or expanding an existing portfolio, the strategy inside this guide represents one of the most compelling opportunities in the Australian property market today.
+    </p>
+    <p class="body-text">
+      Australia is in the middle of a structural housing shortage. Rental vacancy rates are sitting below 1.5% nationally, population growth is accelerating, and the government has committed to building 1.2 million new homes by 2029 — a target that highlights just how far behind supply has fallen. This environment creates a powerful tailwind for well-positioned property investors.
+    </p>
+    <p class="body-text">
+      Duplexes sit at the intersection of that demand. A single block of land. Two dwellings. Two income streams. Stronger capital growth than a comparable single-dwelling investment. And when structured correctly, a strategy that works across multiple buyer profiles — investors, SMSF trustees, and owner-occupiers alike.
+    </p>
+    <p class="body-text">
+      At Investment Bricks, we operate completely independently — we have no alliance to any developer and carry no incentive to push one project over another. Every recommendation we make is driven by data and your specific circumstances.
+    </p>
+    <p class="body-text">
+      This roadmap will walk you through everything you need to understand: the market opportunity, the financial case, how to find and finance the right site, state-by-state rules, and a complete timeline from land to keys.
+    </p>
+    <p class="body-text">
+      Read it through, mark what's relevant to you, and when you're ready — reach out. A 30-minute strategy call with our team is completely free and zero-pressure.
+    </p>
+
+    <p class="body-text" style="margin-top: 20px;"><strong>Lucio</strong><br />
+    <span style="color: var(--muted); font-size: 11px;">Founder, Investment Bricks<br />New Property Specialists</span></p>
+
+    <hr class="section-divider" />
+
+    <div class="chapter-label" style="margin-top: 16px;">What's Inside</div>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px 24px; margin-top: 12px;">
+      <div style="font-size: 11.5px; color: #444; padding: 7px 0; border-bottom: 1px solid #eee; display:flex; gap:8px;"><span style="color: var(--orange); font-weight:700;">01</span> Why Duplexes — Why Now?</div>
+      <div style="font-size: 11.5px; color: #444; padding: 7px 0; border-bottom: 1px solid #eee; display:flex; gap:8px;"><span style="color: var(--orange); font-weight:700;">05</span> Finance Structures</div>
+      <div style="font-size: 11.5px; color: #444; padding: 7px 0; border-bottom: 1px solid #eee; display:flex; gap:8px;"><span style="color: var(--orange); font-weight:700;">02</span> Understanding the Strategy</div>
+      <div style="font-size: 11.5px; color: #444; padding: 7px 0; border-bottom: 1px solid #eee; display:flex; gap:8px;"><span style="color: var(--orange); font-weight:700;">06</span> State-by-State Opportunities</div>
+      <div style="font-size: 11.5px; color: #444; padding: 7px 0; border-bottom: 1px solid #eee; display:flex; gap:8px;"><span style="color: var(--orange); font-weight:700;">03</span> The Financial Case</div>
+      <div style="font-size: 11.5px; color: #444; padding: 7px 0; border-bottom: 1px solid #eee; display:flex; gap:8px;"><span style="color: var(--orange); font-weight:700;">07</span> The Build Timeline</div>
+      <div style="font-size: 11.5px; color: #444; padding: 7px 0; border-bottom: 1px solid #eee; display:flex; gap:8px;"><span style="color: var(--orange); font-weight:700;">04</span> Finding the Right Site</div>
+      <div style="font-size: 11.5px; color: #444; padding: 7px 0; border-bottom: 1px solid #eee; display:flex; gap:8px;"><span style="color: var(--orange); font-weight:700;">08</span> Your Next Step</div>
+    </div>
+
+  </div>
+  <div class="inner-footer">
+    <p>© 2025 Investment Bricks · investmentbricks.com.au · For personal use only. Not financial advice.</p>
+    <span class="pg-num">2</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════════════════════
+  PAGE 3 — CHAPTER 1: WHY NOW
+════════════════════════════════════════════════════════════ -->
+<section class="page">
+  <div class="inner-header">
+    <img src="Investment%20Bricks%20Logo.jpg" alt="Investment Bricks" />
+    <span class="doc-title">Chapter 1 · Why Duplexes — Why Now?</span>
+  </div>
+  <div class="page-content">
+
+    <div class="chapter-label">Chapter 01</div>
+    <div class="chapter-heading">Why Duplexes — <span>Why Now?</span></div>
+    <div class="chapter-rule"></div>
+
+    <p class="body-text">
+      Three converging forces are creating the most favourable conditions for duplex investment in Australia's modern history: a structural housing undersupply, record rental demand, and a federal government mandate to build more dwellings faster — particularly medium-density housing like duplexes.
+    </p>
+
+    <div class="stat-row">
+      <div class="stat-box">
+        <div class="s-num">1.2M</div>
+        <div class="s-label">New homes needed<br />by 2029</div>
+        <div class="s-source">National Housing Accord, 2024</div>
+      </div>
+      <div class="stat-box">
+        <div class="s-num">423K</div>
+        <div class="s-label">People added to<br />Australia in 2024–25</div>
+        <div class="s-source">ABS Population Statistics, 2025</div>
+      </div>
+      <div class="stat-box">
+        <div class="s-num">&lt;1.5%</div>
+        <div class="s-label">National rental<br />vacancy rate</div>
+        <div class="s-source">PropTrack, 2025</div>
+      </div>
+    </div>
+
+    <div class="stat-row stat-row-2" style="margin-top: 0;">
+      <div class="stat-box">
+        <div class="s-num">2.2%</div>
+        <div class="s-label">Western Australia — fastest growing state<br />+65,800 residents in 2024–25</div>
+        <div class="s-source">ABS, 2025</div>
+      </div>
+      <div class="stat-box">
+        <div class="s-num">97K+</div>
+        <div class="s-label">New Queensland residents per year<br />sustained demand across SEQ</div>
+        <div class="s-source">ABS, 2025</div>
+      </div>
+    </div>
+
+    <p class="body-text">
+      Australia's population is growing at its fastest rate in decades — 423,600 people were added in the year to September 2025 alone. Queensland, Western Australia, and Victoria are absorbing the bulk of this growth. Each new resident needs somewhere to live. Rental vacancy rates — already below 1.5% nationally — remain at crisis levels in most capital cities and regional centres, keeping vacancy rates low and rents high.
+    </p>
+
+    <div class="callout">
+      <p><strong>The gap is widening.</strong> Dwelling completions are running well below the National Housing Accord's 1.2 million target. State governments have responded by fast-tracking medium-density approvals — particularly dual-occupancy and duplex developments — making this the most supportive planning environment for duplex investors in a generation.</p>
+    </div>
+
+    <p class="body-text">
+      Against this backdrop, a duplex investment delivers something a standard investment property simply cannot: <strong>two separate, self-contained rental incomes from one parcel of land.</strong> When vacancy rates are low, both dwellings tend to remain tenanted simultaneously — compounding the income advantage and reducing your effective vacancy risk.
+    </p>
+
+    <img src="Assets/Screenshot-2026-05-26-081256.png" alt="Investment Bricks duplex render" class="prop-img" style="height:160px; object-fit: cover; object-position: center;" />
+
+  </div>
+  <div class="inner-footer">
+    <p>© 2025 Investment Bricks · investmentbricks.com.au · For personal use only. Not financial advice.</p>
+    <span class="pg-num">3</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════════════════════
+  PAGE 4 — CHAPTER 2: THE STRATEGY
+════════════════════════════════════════════════════════════ -->
+<section class="page">
+  <div class="inner-header">
+    <img src="Investment%20Bricks%20Logo.jpg" alt="Investment Bricks" />
+    <span class="doc-title">Chapter 2 · Understanding the Duplex Strategy</span>
+  </div>
+  <div class="page-content">
+
+    <div class="chapter-label">Chapter 02</div>
+    <div class="chapter-heading">Understanding <span>the Strategy</span></div>
+    <div class="chapter-rule"></div>
+
+    <p class="body-text">
+      A <strong>duplex</strong> is a single land parcel containing two fully self-contained dwellings — each with its own entrance, kitchen, living areas, bedrooms, and bathrooms. They may sit side-by-side (most common) or one on top of the other. Both dwellings sit on one title initially and can often be subdivided into two separate strata titles after completion, giving investors the flexibility to hold both or sell one.
+    </p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Feature</th>
+          <th>Duplex</th>
+          <th>Granny Flat</th>
+          <th>Dual-Key</th>
+          <th>Standard IP</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Separate dwellings</td>
+          <td><span class="tick">✓ 2 full</span></td>
+          <td><span class="tick">✓ 1 + 1 small</span></td>
+          <td><span class="tick">✓ 2 sections</span></td>
+          <td><span class="cross">✗ 1 only</span></td>
+        </tr>
+        <tr>
+          <td>Separate titles possible</td>
+          <td><span class="tick">✓ Subdivide</span></td>
+          <td><span class="cross">✗ Usually not</span></td>
+          <td><span class="cross">✗ One title</span></td>
+          <td><span class="cross">✗ One title</span></td>
+        </tr>
+        <tr>
+          <td>Dual rental income</td>
+          <td><span class="tick">✓ Full</span></td>
+          <td><span class="tick">✓ Partial</span></td>
+          <td><span class="tick">✓ Full</span></td>
+          <td><span class="cross">✗ Single</span></td>
+        </tr>
+        <tr>
+          <td>Separate lease agreements</td>
+          <td><span class="tick">✓</span></td>
+          <td><span class="tick">✓</span></td>
+          <td><span class="tick">✓</span></td>
+          <td><span class="cross">✗</span></td>
+        </tr>
+        <tr>
+          <td>Depreciation benefits (new)</td>
+          <td><strong>2× dwellings</strong></td>
+          <td>1.5× approx</td>
+          <td>2× sections</td>
+          <td>1× dwelling</td>
+        </tr>
+        <tr>
+          <td>Capital growth potential</td>
+          <td><strong>Land + dual income</strong></td>
+          <td>Limited uplift</td>
+          <td>Land value</td>
+          <td>Land value</td>
+        </tr>
+        <tr>
+          <td>Exit flexibility</td>
+          <td><span class="tick">✓ Sell 1 or 2</span></td>
+          <td>Sell whole block</td>
+          <td>Sell whole block</td>
+          <td>Sell whole block</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="chapter-label" style="margin-top: 18px;">Key Advantages</div>
+    <ul class="tick-list">
+      <li><strong>Reduced vacancy risk:</strong> Even if one dwelling is vacant, the other continues generating income — unlike a single dwelling that produces $0 when empty.</li>
+      <li><strong>Higher gross yields:</strong> Two rents from one land cost. Duplex investors in growth corridors regularly achieve 6–8% gross yields vs. 3.5–4.5% for standalone houses.</li>
+      <li><strong>Stronger depreciation:</strong> New construction across two dwellings means double the capital works (Div. 43) and plant & equipment (Div. 40) depreciation claims.</li>
+      <li><strong>Subdivision upside:</strong> Once construction is complete, many duplexes can be strata-titled, giving you the option to sell one dwelling and recycle capital — or hold both for long-term compounding.</li>
+      <li><strong>Medium-density planning support:</strong> State and federal governments are actively fast-tracking medium-density approvals, shortening DA timelines for complying duplex developments.</li>
+    </ul>
+
+  </div>
+  <div class="inner-footer">
+    <p>© 2025 Investment Bricks · investmentbricks.com.au · For personal use only. Not financial advice.</p>
+    <span class="pg-num">4</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════════════════════
+  PAGE 5 — CHAPTER 3: THE FINANCIAL CASE
+════════════════════════════════════════════════════════════ -->
+<section class="page">
+  <div class="inner-header">
+    <img src="Investment%20Bricks%20Logo.jpg" alt="Investment Bricks" />
+    <span class="doc-title">Chapter 3 · The Financial Case</span>
+  </div>
+  <div class="page-content">
+
+    <div class="chapter-label">Chapter 03</div>
+    <div class="chapter-heading">The <span>Financial Case</span></div>
+    <div class="chapter-rule"></div>
+
+    <p class="body-text">
+      The numbers below are based on a real-world investment scenario in a Southeast Queensland growth corridor — one of the most active duplex markets in Australia right now. Your numbers will vary by location, but this case study illustrates the core financial advantages of the strategy.
+    </p>
+
+    <div class="two-col">
+      <div>
+        <div class="case-card">
+          <h4>💰 Investment Summary — SEQ Duplex</h4>
+          <div class="case-row"><span class="c-label">Land (650sqm, dual occ. zoned)</span><span class="c-val">$430,000</span></div>
+          <div class="case-row"><span class="c-label">Build cost (2 × 3br/2ba/1gr)</span><span class="c-val">$560,000</span></div>
+          <div class="case-row"><span class="c-label">Stamp duty + legal costs</span><span class="c-val">$22,000</span></div>
+          <div class="case-row"><span class="c-label">Total project cost</span><span class="c-val highlight">$1,012,000</span></div>
+          <div class="case-row"><span class="c-label">Weekly rent — Dwelling 1</span><span class="c-val">$620/wk</span></div>
+          <div class="case-row"><span class="c-label">Weekly rent — Dwelling 2</span><span class="c-val">$600/wk</span></div>
+          <div class="case-row"><span class="c-label">Combined weekly income</span><span class="c-val highlight">$1,220/wk</span></div>
+          <div class="case-total">
+            <span class="c-label">Gross Annual Rental Income</span>
+            <span class="c-val">$63,440 / yr</span>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div style="background: var(--lgrey); border-radius: 8px; padding: 16px; margin-bottom: 12px;">
+          <div style="font-size: 10px; font-weight:700; text-transform:uppercase; letter-spacing: 0.08em; color: var(--muted); margin-bottom: 10px;">Annual Holding Costs (80% LVR)</div>
+          <div style="display:flex; justify-content:space-between; font-size: 11.5px; padding: 6px 0; border-bottom: 1px solid #e0e0e0;"><span>Interest (6.5% I/O on $809,600)</span><span style="font-weight:600;">$52,624</span></div>
+          <div style="display:flex; justify-content:space-between; font-size: 11.5px; padding: 6px 0; border-bottom: 1px solid #e0e0e0;"><span>Property management (8.5%)</span><span style="font-weight:600;">$5,393</span></div>
+          <div style="display:flex; justify-content:space-between; font-size: 11.5px; padding: 6px 0; border-bottom: 1px solid #e0e0e0;"><span>Rates, insurance, maintenance</span><span style="font-weight:600;">$5,200</span></div>
+          <div style="display:flex; justify-content:space-between; font-size: 12px; padding: 8px 0; font-weight:700; color: var(--charcoal);"><span>Total costs</span><span>$63,217</span></div>
+        </div>
+        <div class="stat-box" style="margin:0 0 12px;">
+          <div class="s-num">6.27%</div>
+          <div class="s-label">Gross Rental Yield</div>
+          <div class="s-source">vs. 3.5–4.5% for comparable single dwelling</div>
+        </div>
+        <div class="stat-box" style="margin:0; border-top-color: #2e9e4f;">
+          <div class="s-num" style="color: #2e9e4f;">$16,800</div>
+          <div class="s-label">Est. Annual Tax Depreciation</div>
+          <div class="s-source">Div 43 + Div 40 on new construction (ATO)</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="income-bar" style="margin-top: 14px;">
+      <div class="income-item"><div class="i-label">Gross Yield</div><div class="i-val">6.27%</div><div class="i-sub">vs ~4% for single dwelling</div></div>
+      <div class="income-divider"></div>
+      <div class="income-item"><div class="i-label">Depreciation Benefit</div><div class="i-val">$16,800/yr</div><div class="i-sub">30% tax bracket saves ~$5,040</div></div>
+      <div class="income-divider"></div>
+      <div class="income-item"><div class="i-label">5-yr Equity (5% growth)</div><div class="i-val">~$291K</div><div class="i-sub">Projected capital growth</div></div>
+      <div class="income-divider"></div>
+      <div class="income-item"><div class="i-label">Combined Weekly Income</div><div class="i-val">$1,220</div><div class="i-sub">Two dwellings, one block</div></div>
+    </div>
+
+    <p class="note">* This is an illustrative example only and does not constitute financial advice. Figures are based on typical SEQ market conditions in 2025. Always seek independent financial and tax advice before investing.</p>
+
+  </div>
+  <div class="inner-footer">
+    <p>© 2025 Investment Bricks · investmentbricks.com.au · For personal use only. Not financial advice.</p>
+    <span class="pg-num">5</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════════════════════
+  PAGE 6 — CHAPTER 4: FINDING THE RIGHT SITE
+════════════════════════════════════════════════════════════ -->
+<section class="page">
+  <div class="inner-header">
+    <img src="Investment%20Bricks%20Logo.jpg" alt="Investment Bricks" />
+    <span class="doc-title">Chapter 4 · Finding the Right Site</span>
+  </div>
+  <div class="page-content">
+
+    <div class="chapter-label">Chapter 04</div>
+    <div class="chapter-heading">Finding the <span>Right Site</span></div>
+    <div class="chapter-rule"></div>
+
+    <p class="body-text">
+      Site selection is the single most important decision in a duplex development. Not every block of land that meets minimum lot size requirements will stack up financially — and not every suburb with affordability will have the rental demand to sustain two tenants simultaneously. Here is what Investment Bricks looks for in every site assessment.
+    </p>
+
+    <div class="two-col" style="margin-bottom: 14px;">
+      <div>
+        <div class="chapter-label">Must-Have Criteria</div>
+        <ul class="tick-list">
+          <li>Correct zoning for dual occupancy (check council DA requirements)</li>
+          <li>Minimum lot size met for the specific council (typically 600–700sqm)</li>
+          <li>Appropriate frontage (usually 15–18m minimum for side-by-side)</li>
+          <li>No significant flood, bushfire, or acid sulphate soil overlays</li>
+          <li>Within 1km of schools, services, and transport corridors</li>
+          <li>Rental vacancy below 2% in the suburb/postcode</li>
+          <li>Population growth trend in the region</li>
+          <li>Comparable duplex rents demonstrable from recent leases</li>
+        </ul>
+      </div>
+      <div>
+        <div class="chapter-label">Red Flags to Avoid</div>
+        <ul class="tick-list" style="color: #c0392b;">
+          <li style="color:#444;">Heritage overlays that restrict demolition or new builds</li>
+          <li style="color:#444;">Sites requiring retaining walls &gt;2m (cost blowout risk)</li>
+          <li style="color:#444;">Lots with irregular shape reducing usable area</li>
+          <li style="color:#444;">Suburb vacancy rates above 3%</li>
+          <li style="color:#444;">Overland flow paths across the building envelope</li>
+          <li style="color:#444;">Councils with DA backlogs exceeding 6 months</li>
+          <li style="color:#444;">Sites priced at full development uplift (no margin left)</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="chapter-label">State-by-State Zoning & Yield Quick Reference</div>
+    <div class="zone-grid">
+      <div class="zone-card">
+        <div class="state">QLD</div>
+        <div class="zone-name">Low-Medium Density</div>
+        <div class="zone-detail">Min. 600sqm<br/>15m frontage<br/>Dual occ. code</div>
+        <div class="zone-yield">6.0–7.8%</div>
+        <div class="zone-yield-lbl">Gross yield (growth corridors)</div>
+      </div>
+      <div class="zone-card">
+        <div class="state">SA</div>
+        <div class="zone-name">Neighbourhood / General Neighbourhood</div>
+        <div class="zone-detail">Min. 420–600sqm<br/>Varies by council<br/>PlanSA code</div>
+        <div class="zone-yield">5.8–7.2%</div>
+        <div class="zone-yield-lbl">Gross yield (outer Adelaide)</div>
+      </div>
+      <div class="zone-card">
+        <div class="state">WA</div>
+        <div class="zone-name">R25 / R30 / R40 Codes</div>
+        <div class="zone-detail">Min. 400–500sqm<br/>R-code density<br/>WAPC guidelines</div>
+        <div class="zone-yield">6.0–7.5%</div>
+        <div class="zone-yield-lbl">Gross yield (Perth fringe)</div>
+      </div>
+      <div class="zone-card">
+        <div class="state">VIC</div>
+        <div class="zone-name">General Residential (GRZ)</div>
+        <div class="zone-detail">Min. 500sqm<br/>ResCode applies<br/>Council overlay check</div>
+        <div class="zone-yield">4.5–5.8%</div>
+        <div class="zone-yield-lbl">Gross yield (outer Melbourne)</div>
+      </div>
+      <div class="zone-card">
+        <div class="state">NSW</div>
+        <div class="zone-name">R2 Low Density / SEPP Exempt</div>
+        <div class="zone-detail">Min. 500–600sqm<br/>CDC pathway<br/>available many areas</div>
+        <div class="zone-yield">4.8–6.0%</div>
+        <div class="zone-yield-lbl">Gross yield (Western Sydney)</div>
+      </div>
+    </div>
+
+    <div class="callout">
+      <p><strong>Investment Bricks advantage:</strong> We have assessed duplex-viable sites across all five states. Because we're independent, we can show you off-market opportunities and compare sites across jurisdictions — matching the best available site to your budget and goals, not the other way around.</p>
+    </div>
+
+  </div>
+  <div class="inner-footer">
+    <p>© 2025 Investment Bricks · investmentbricks.com.au · For personal use only. Not financial advice.</p>
+    <span class="pg-num">6</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════════════════════
+  PAGE 7 — CHAPTER 5: FINANCE STRUCTURES
+════════════════════════════════════════════════════════════ -->
+<section class="page">
+  <div class="inner-header">
+    <img src="Investment%20Bricks%20Logo.jpg" alt="Investment Bricks" />
+    <span class="doc-title">Chapter 5 · Finance Structures</span>
+  </div>
+  <div class="page-content">
+
+    <div class="chapter-label">Chapter 05</div>
+    <div class="chapter-heading">Finance <span>Structures</span></div>
+    <div class="chapter-rule"></div>
+
+    <p class="body-text">
+      Duplex construction is typically financed through a <strong>land and construction loan</strong> — a two-stage facility where the land is purchased first, then the construction component draws down progressively as the build reaches key milestones. Understanding this structure is essential to managing your cash flow throughout the project.
+    </p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Finance Pathway</th>
+          <th>How It Works</th>
+          <th>Best For</th>
+          <th>Key Consideration</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Cash + Construction Loan</strong></td>
+          <td>Cash deposit for land; bank funds build progress payments</td>
+          <td>First-time duplex investors with 20%+ deposit</td>
+          <td>Interest-only during construction; full repayments post-completion</td>
+        </tr>
+        <tr>
+          <td><strong>Equity Release (PPOR)</strong></td>
+          <td>Draw equity from existing home as deposit; then construction loan</td>
+          <td>Existing homeowners with 50%+ equity in PPOR</td>
+          <td>No cash required out of pocket; equity does the work</td>
+        </tr>
+        <tr>
+          <td><strong>Investment Portfolio Equity</strong></td>
+          <td>Cross-collateralise or release equity from existing IP</td>
+          <td>Experienced investors growing a portfolio</td>
+          <td>Maintain clean loan structures; avoid cross-collateralisation where possible</td>
+        </tr>
+        <tr>
+          <td><strong>SMSF Borrowing</strong></td>
+          <td>Limited recourse borrowing arrangement (LRBA) within superannuation</td>
+          <td>Self-managed super fund trustees</td>
+          <td>Strict rules apply; specialist SMSF lender required; 70–75% LVR typical</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="chapter-label" style="margin-top: 16px;">Construction Loan Draw-Down Schedule</div>
+    <p class="body-text">Banks release funds in five progress payments tied to build milestones. You only pay interest on the amount drawn, keeping interest costs lower during construction.</p>
+
+    <div style="display: flex; gap: 0; border-radius: 8px; overflow:hidden; margin: 10px 0;">
+      <div style="background:#333; color:white; padding:10px 12px; flex:1; text-align:center; font-size:10px; font-weight:700; line-height:1.4; border-right: 1px solid #444;">BASE<br/><span style="color:var(--peach); font-size:13px; font-weight:800;">10%</span></div>
+      <div style="background:#3d3d3d; color:white; padding:10px 12px; flex:1; text-align:center; font-size:10px; font-weight:700; line-height:1.4; border-right: 1px solid #444;">FRAME<br/><span style="color:var(--peach); font-size:13px; font-weight:800;">15%</span></div>
+      <div style="background:#474747; color:white; padding:10px 12px; flex:1; text-align:center; font-size:10px; font-weight:700; line-height:1.4; border-right: 1px solid #444;">LOCK-UP<br/><span style="color:var(--peach); font-size:13px; font-weight:800;">35%</span></div>
+      <div style="background:#515151; color:white; padding:10px 12px; flex:1; text-align:center; font-size:10px; font-weight:700; line-height:1.4; border-right: 1px solid #444;">FIXING<br/><span style="color:var(--peach); font-size:13px; font-weight:800;">20%</span></div>
+      <div style="background:var(--orange); color:white; padding:10px 12px; flex:1; text-align:center; font-size:10px; font-weight:700; line-height:1.4;">COMPLETION<br/><span style="font-size:13px; font-weight:800;">20%</span></div>
+    </div>
+
+    <div class="two-col" style="margin-top: 14px;">
+      <div class="callout">
+        <p><strong>Tax tip — new build depreciation:</strong> A $560,000 duplex build typically generates $14,000–$19,000/year in ATO-approved depreciation deductions across Division 43 (capital works, 2.5%/yr) and Division 40 (plant and equipment). At a 37% marginal tax rate, this can save $5,000–$7,000 in tax annually — effectively subsidising your holding costs.</p>
+      </div>
+      <div class="callout">
+        <p><strong>Borrowing capacity rule of thumb:</strong> Most lenders will accept 80% of the projected rental income from <em>both</em> dwellings in their serviceability assessment — a significant uplift over the single-income assessment applied to a standard investment property. This alone can increase your borrowing capacity considerably.</p>
+      </div>
+    </div>
+
+  </div>
+  <div class="inner-footer">
+    <p>© 2025 Investment Bricks · investmentbricks.com.au · For personal use only. Not financial advice.</p>
+    <span class="pg-num">7</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════════════════════
+  PAGE 8 — CHAPTER 6: STATE-BY-STATE
+════════════════════════════════════════════════════════════ -->
+<section class="page">
+  <div class="inner-header">
+    <img src="Investment%20Bricks%20Logo.jpg" alt="Investment Bricks" />
+    <span class="doc-title">Chapter 6 · State-by-State Opportunities</span>
+  </div>
+  <div class="page-content">
+
+    <div class="chapter-label">Chapter 06</div>
+    <div class="chapter-heading">State-by-State <span>Opportunities</span></div>
+    <div class="chapter-rule"></div>
+
+    <p class="body-text">
+      The duplex opportunity is not uniform across Australia — different states offer different planning environments, yield profiles, and growth drivers. Below is Investment Bricks' current assessment of the five major markets.
+    </p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>State</th>
+          <th>Key Growth Corridors</th>
+          <th>Typical Yield</th>
+          <th>Population Growth</th>
+          <th>Outlook</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>QLD</strong></td>
+          <td>Ipswich, Logan, Moreton Bay, Toowoomba, Gold Coast fringe</td>
+          <td><strong>6.0–7.8%</strong></td>
+          <td>+97,300/yr <span class="badge badge-green">↑ 1.7%</span></td>
+          <td>★★★★★</td>
+        </tr>
+        <tr>
+          <td><strong>WA</strong></td>
+          <td>Mandurah, Rockingham, Armadale, Baldivis, Byford</td>
+          <td><strong>6.0–7.5%</strong></td>
+          <td>+65,800/yr <span class="badge badge-green">↑ 2.2%</span></td>
+          <td>★★★★★</td>
+        </tr>
+        <tr>
+          <td><strong>SA</strong></td>
+          <td>Playford, Salisbury, Mount Barker, Murray Bridge</td>
+          <td><strong>5.8–7.2%</strong></td>
+          <td>+21,100/yr <span class="badge">↑ 1.1%</span></td>
+          <td>★★★★☆</td>
+        </tr>
+        <tr>
+          <td><strong>VIC</strong></td>
+          <td>Melton, Wyndham, Whittlesea, Cardinia</td>
+          <td><strong>4.5–5.8%</strong></td>
+          <td>+122,000/yr <span class="badge badge-green">↑ 1.7%</span></td>
+          <td>★★★★☆</td>
+        </tr>
+        <tr>
+          <td><strong>NSW</strong></td>
+          <td>Penrith, Campbelltown, Richmond–Windsor, Central Coast</td>
+          <td><strong>4.8–6.0%</strong></td>
+          <td>+105,600/yr <span class="badge">↑ 1.2%</span></td>
+          <td>★★★☆☆</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 14px;">
+
+      <div style="background: var(--lgrey); border-radius: 6px; padding: 14px 16px; border-top: 3px solid var(--orange);">
+        <div style="font-size: 10px; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:var(--orange); margin-bottom:8px;">🔥 Top Pick: Southeast Queensland</div>
+        <p style="font-size: 11.5px; color:#444; line-height:1.65;">SEQ continues to attract interstate migration at record levels. Ipswich and Moreton Bay council areas have dual-occupancy-friendly codes, land prices still below the Melbourne/Sydney equivalents, and rental yields that make the numbers work. Population growth of 97,000+ per year sustains rental demand across both dwellings simultaneously.</p>
+      </div>
+
+      <div style="background: var(--lgrey); border-radius: 6px; padding: 14px 16px; border-top: 3px solid var(--orange);">
+        <div style="font-size: 10px; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:var(--orange); margin-bottom:8px;">🔥 Rising Market: Perth, WA</div>
+        <p style="font-size: 11.5px; color:#444; line-height:1.65;">Western Australia is Australia's fastest growing state at 2.2% per annum. Perth's outer-ring suburbs have R-code zoning that supports duplex development, land prices remain relatively affordable, and rental vacancy sits at crisis lows — pushing rents and yields higher. A compelling combination for investors seeking income and growth.</p>
+      </div>
+
+      <div style="background: var(--lgrey); border-radius: 6px; padding: 14px 16px; border-top: 3px solid #858B9F;">
+        <div style="font-size: 10px; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:#555; margin-bottom:8px;">Steady: Adelaide, SA</div>
+        <p style="font-size: 11.5px; color:#444; line-height:1.65;">Adelaide's outer northern and southern suburbs offer strong duplex yields with the lowest entry costs of any capital city. PlanSA's medium-density policy has simplified approvals in targeted growth zones. Ideal for investors with a lower capital budget seeking reliable yield-first returns.</p>
+      </div>
+
+      <div style="background: var(--lgrey); border-radius: 6px; padding: 14px 16px; border-top: 3px solid #858B9F;">
+        <div style="font-size: 10px; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:#555; margin-bottom:8px;">Note: Victoria & NSW</div>
+        <p style="font-size: 11.5px; color:#444; line-height:1.65;">Higher land costs in Melbourne and Sydney compress gross yields relative to QLD and WA. That said, outer-ring opportunities exist in both states — particularly in Melton (VIC) and Penrith/Campbelltown (NSW) — where land affordability and strong population growth make duplex projects viable for investors focused on long-term equity.</p>
+      </div>
+    </div>
+
+  </div>
+  <div class="inner-footer">
+    <p>© 2025 Investment Bricks · investmentbricks.com.au · For personal use only. Not financial advice.</p>
+    <span class="pg-num">8</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════════════════════
+  PAGE 9 — CHAPTER 7: THE BUILD TIMELINE
+════════════════════════════════════════════════════════════ -->
+<section class="page">
+  <div class="inner-header">
+    <img src="Investment%20Bricks%20Logo.jpg" alt="Investment Bricks" />
+    <span class="doc-title">Chapter 7 · The Build Timeline</span>
+  </div>
+  <div class="page-content">
+
+    <div class="chapter-label">Chapter 07</div>
+    <div class="chapter-heading">The <span>Build Timeline</span></div>
+    <div class="chapter-rule"></div>
+
+    <p class="body-text">
+      Most Investment Bricks clients go from first consultation to collecting their first dual rental income in <strong>12–18 months</strong>. Here is a realistic step-by-step breakdown of the process — and what we handle at each stage so you don't have to.
+    </p>
+
+    <div class="two-col">
+      <div class="timeline">
+        <div class="tl-item">
+          <div class="tl-left"><div class="tl-dot">1</div><div class="tl-line"></div></div>
+          <div class="tl-content">
+            <div class="tl-duration">Weeks 1–3</div>
+            <strong>Strategy Call & Assessment</strong>
+            <span>Review your financial position, goals, and preferred locations. Investment Bricks presents suitable sites and project options based on your profile.</span>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-left"><div class="tl-dot">2</div><div class="tl-line"></div></div>
+          <div class="tl-content">
+            <div class="tl-duration">Weeks 3–6</div>
+            <strong>Site Due Diligence</strong>
+            <span>Site inspection, council zoning confirmation, flood/overlay checks, comparable rental analysis, and builder preliminary pricing.</span>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-left"><div class="tl-dot">3</div><div class="tl-line"></div></div>
+          <div class="tl-content">
+            <div class="tl-duration">Weeks 5–10</div>
+            <strong>Finance Pre-Approval</strong>
+            <span>Broker introduces construction loan application. Land and construction split confirmed. Pre-approval typically in 3–5 weeks for standard applications.</span>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-left"><div class="tl-dot">4</div><div class="tl-line"></div></div>
+          <div class="tl-content">
+            <div class="tl-duration">Weeks 8–12</div>
+            <strong>Land Contract & Settlement</strong>
+            <span>Sign land purchase contract (subject to finance and due diligence). Standard 30–60 day settlement. Formal finance approval triggered at this stage.</span>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-left"><div class="tl-dot">5</div></div>
+          <div class="tl-content">
+            <div class="tl-duration">Weeks 10–14</div>
+            <strong>Building Contract Signed</strong>
+            <span>Fixed-price contract signed with builder. Plans and specifications locked in. Builder lodges for Development Application (DA) or Certifier Complying Development Certificate (CDC).</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline">
+        <div class="tl-item">
+          <div class="tl-left"><div class="tl-dot">6</div><div class="tl-line"></div></div>
+          <div class="tl-content">
+            <div class="tl-duration">Weeks 14–28</div>
+            <strong>Development / Building Approval</strong>
+            <span>DA lodged with council (6–20 weeks) or CDC through private certifier (4–8 weeks). CDC pathway now available in many growth corridors, reducing approval times significantly.</span>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-left"><div class="tl-dot">7</div><div class="tl-line"></div></div>
+          <div class="tl-content">
+            <div class="tl-duration">Weeks 28–52</div>
+            <strong>Construction</strong>
+            <span>Builder commences works. Five progress payment stages (slab, frame, lock-up, fixing, completion). Bank inspects at each stage before releasing funds. Typical build time: 18–24 weeks for a duplex pair.</span>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-left"><div class="tl-dot">8</div><div class="tl-line"></div></div>
+          <div class="tl-content">
+            <div class="tl-duration">Weeks 50–56</div>
+            <strong>Practical Completion & Handover</strong>
+            <span>Defect inspection conducted. Final progress payment released. Certificate of Occupancy issued. Keys handed to owner. Property manager can be briefed 4–6 weeks before this stage.</span>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-left"><div class="tl-dot">9</div></div>
+          <div class="tl-content">
+            <div class="tl-duration">Weeks 54–60</div>
+            <strong>Tenants Placed — Income Begins</strong>
+            <span>Property manager advertises and screens tenants. Both dwellings typically tenanted within 2–4 weeks. First dual rental income received. Depreciation schedule commissioned.</span>
+          </div>
+        </div>
+        <div class="section-orange" style="margin-top: 6px;">
+          <h5>🏁 Typical Total Timeline</h5>
+          <p>From first strategy call to first dual rental income: <strong style="color: white;">12–18 months</strong>. Investment Bricks manages the coordination across every step — builder, broker, solicitor, and property manager — so you remain fully informed without carrying the administrative burden.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="inner-footer">
+    <p>© 2025 Investment Bricks · investmentbricks.com.au · For personal use only. Not financial advice.</p>
+    <span class="pg-num">9</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════════════════════
+  PAGE 10 — BACK COVER / NEXT STEPS
+════════════════════════════════════════════════════════════ -->
+<section class="page back-cover">
+  <div class="back-cover-image"></div>
+  <div class="back-inner">
+
+    <div class="back-tag">Investment Bricks · New Property Specialists</div>
+
+    <h2>Ready to Take<br />Your Next Step?</h2>
+    <p class="back-sub">You've seen the data. You understand the strategy. Now it's time to find out if a duplex investment is the right move for your specific financial position — and if so, which opportunity fits best.</p>
+
+    <div class="back-steps">
+      <div class="back-step">
+        <div class="bs-num">Step 01</div>
+        <div class="bs-text">Book your free 30-minute strategy call with Lucio</div>
+      </div>
+      <div class="back-step">
+        <div class="bs-num">Step 02</div>
+        <div class="bs-text">Review live off-market duplex sites matched to your budget</div>
+      </div>
+      <div class="back-step">
+        <div class="bs-num">Step 03</div>
+        <div class="bs-text">Receive your personalised duplex investment roadmap within 24 hours</div>
+      </div>
+    </div>
+
+    <div class="contact-row">
+      <div class="contact-item">
+        <div class="ci-icon">📞</div>
+        <div>
+          <div class="ci-label">Call Direct</div>
+          <div class="ci-val">0408 827 357</div>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="ci-icon">✉️</div>
+        <div>
+          <div class="ci-label">Email</div>
+          <div class="ci-val">lucio@investmentbricks.com.au</div>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="ci-icon">🌐</div>
+        <div>
+          <div class="ci-label">Website</div>
+          <div class="ci-val">investmentbricks.com.au</div>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="ci-icon">📍</div>
+        <div>
+          <div class="ci-label">Location</div>
+          <div class="ci-val">Adelaide, South Australia</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="back-logo-wrap">
+      <img src="Investment%20Bricks%20Logo.jpg" alt="Investment Bricks" />
+    </div>
+
+    <p class="back-disclaimer">
+      This document has been prepared by Investment Bricks Pty Ltd for general informational purposes only. It does not constitute financial product advice, legal advice, or a recommendation to invest. Past performance is not indicative of future results. Rental yield and capital growth figures referenced are illustrative estimates based on general market conditions and are not guaranteed. All investment decisions should be made in consultation with a qualified financial adviser and independent legal counsel. Investment Bricks is an independent property consultancy and does not hold an Australian Financial Services Licence (AFSL). © 2025 Investment Bricks. All rights reserved.
+    </p>
+  </div>
+</section>
+
+</div><!-- .pages -->
+
+</body>
+</html>
