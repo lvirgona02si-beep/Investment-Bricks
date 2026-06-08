@@ -231,7 +231,7 @@ def make_ad(bg_path, headline, sub, body, cta, out_name,
 # ── AD 1 — Dual Income / Cash Flow ────────────────────────────────────────────
 make_ad(
     bg_path   = os.path.join(ASSETS, "Photo-1.jpeg"),
-    headline  = "ONE BLOCK.\nTWO INCOMES.",
+    headline  = "1 BLOCK.\n2+ INCOMES.",
     sub       = "$1,220/week from a single duplex site.",
     body      = "Australian duplex investors are achieving 6%+ gross yields — nearly double a standard rental. See the full numbers in our free roadmap.",
     cta       = "Download Free Roadmap  →",
