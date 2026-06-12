@@ -650,9 +650,15 @@
           <!-- Step 4 -->
           <div class="form-step" id="step4">
             <p class="step-question">Where should we send your roadmap?</p>
-            <div class="form-group">
-              <label>First Name</label>
-              <input type="text" id="fname" placeholder="Your first name" />
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
+              <div class="form-group" style="margin-bottom:0;">
+                <label>First Name</label>
+                <input type="text" id="fname" placeholder="First name" />
+              </div>
+              <div class="form-group" style="margin-bottom:0;">
+                <label>Last Name</label>
+                <input type="text" id="lname" placeholder="Last name" />
+              </div>
             </div>
             <div class="form-group">
               <label>Email Address</label>
@@ -860,16 +866,17 @@
 
     function submitForm() {
       const fname = document.getElementById('fname').value.trim();
+      const lname = document.getElementById('lname').value.trim();
       const email = document.getElementById('email').value.trim();
       const phone = document.getElementById('phone').value.trim();
-      if (!fname || !email || !phone) {
+      if (!fname || !lname || !email || !phone) {
         alert('Please fill in all fields to receive your roadmap.');
         return;
       }
       fetch('https://services.leadconnectorhq.com/hooks/mxpdI2F8FTvzLKHkyp6W/webhook-trigger/36a7e6ab-2e02-4d54-b986-b3760b77d157', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name: fname, email: email, phone: phone })
+        body: JSON.stringify({ firstName: fname, lastName: lname, email: email, phone: phone })
       }).finally(() => {
         window.location.href = 'booking.html?name=' + encodeURIComponent(fname);
       });
