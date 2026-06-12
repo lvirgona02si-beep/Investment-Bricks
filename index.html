@@ -866,7 +866,13 @@
         alert('Please fill in all fields to receive your roadmap.');
         return;
       }
-      window.location.href = 'booking.html?name=' + encodeURIComponent(fname);
+      fetch('https://services.leadconnectorhq.com/hooks/mxpdI2F8FTvzLKHkyp6W/webhook-trigger/36a7e6ab-2e02-4d54-b986-b3760b77d157', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name: fname, email: email, phone: phone })
+      }).finally(() => {
+        window.location.href = 'booking.html?name=' + encodeURIComponent(fname);
+      });
     }
 
     function toggleFaq(el) {
