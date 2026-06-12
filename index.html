@@ -873,10 +873,18 @@
         alert('Please fill in all fields to receive your roadmap.');
         return;
       }
-      fetch('https://services.leadconnectorhq.com/hooks/mxpdI2F8FTvzLKHkyp6W/webhook-trigger/cecd14cb-cdf5-4d19-95f9-7f08dd21f8e1', {
+      fetch('https://services.leadconnectorhq.com/hooks/mxpdI2F8FTvzLKHkyp6W/webhook-trigger/9ae3f0c9-5d4c-4adf-8245-b5a0ad5879a8', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ firstName: fname, lastName: lname, email: email, phone: phone })
+        body: JSON.stringify({
+          firstName: fname,
+          lastName: lname,
+          email: email,
+          phone: phone,
+          capitalAvailable: answers['step1'] || '',
+          investmentTimeline: answers['step2'] || '',
+          investmentGoal: answers['step3'] || ''
+        })
       }).finally(() => {
         window.location.href = 'booking.html?name=' + encodeURIComponent(fname);
       });
