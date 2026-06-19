@@ -315,55 +315,66 @@
 
     /* ── WHAT'S INSIDE ── */
     .content-section {
-      background: var(--lightgrey);
+      background: var(--white);
       padding: 56px 24px;
     }
     .content-wrap {
-      max-width: 720px;
+      max-width: 760px;
       margin: 0 auto;
+      text-align: center;
     }
     .content-wrap h2 {
       font-size: clamp(20px, 3vw, 28px);
+      font-weight: 800;
+      color: var(--charcoal);
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+      margin-bottom: 10px;
+    }
+    .content-wrap h2 span { color: var(--orange); }
+    .content-wrap .intro-text {
+      font-size: 15px;
+      color: #666;
+      margin-bottom: 36px;
+      line-height: 1.7;
+      max-width: 580px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .chapter-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      text-align: left;
+    }
+    @media (max-width: 600px) { .chapter-grid { grid-template-columns: 1fr; } }
+    .chapter-card {
+      background: var(--lightgrey);
+      border-radius: 8px;
+      padding: 20px 20px 22px;
+      border-top: 3px solid var(--orange);
+    }
+    .chapter-card:last-child { grid-column: 1 / -1; }
+    .chapter-label {
+      font-size: 10px;
       font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
       color: var(--orange);
       margin-bottom: 8px;
     }
-    .content-wrap .intro-text {
-      font-size: 15px;
-      color: #555;
-      margin-bottom: 32px;
-      line-height: 1.8;
-    }
-    .roadmap-list { list-style: none; }
-    .roadmap-list li {
-      display: flex;
-      gap: 16px;
-      padding: 18px 0;
-      border-bottom: 1px solid #ddd;
-    }
-    .roadmap-list li:last-child { border-bottom: none; }
-    .bp-num {
-      flex-shrink: 0;
-      width: 36px;
-      height: 36px;
-      background: var(--orange);
-      color: var(--white);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 14px;
-      font-weight: 700;
-      margin-top: 2px;
-    }
-    .bp-text strong {
-      display: block;
+    .chapter-title {
       font-size: 14px;
       font-weight: 700;
       color: var(--charcoal);
-      margin-bottom: 4px;
+      margin-bottom: 8px;
+      line-height: 1.4;
     }
-    .bp-text span { font-size: 13px; color: #666; line-height: 1.6; }
+    .chapter-desc {
+      font-size: 13px;
+      color: #666;
+      line-height: 1.65;
+    }
 
     /* ── RESULTS (testimonials) ── */
     .results-section {
@@ -635,45 +646,42 @@
   <!-- WHAT'S INSIDE -->
   <section class="content-section">
     <div class="content-wrap">
-      <h2>What's Inside the Roadmap</h2>
-      <p class="intro-text">Duplexes are one of Australia's most powerful investment strategies — two income streams, one land parcel, and significantly stronger equity growth. This free guide gives you a clear, step-by-step roadmap to duplex ownership.</p>
-      <ul class="roadmap-list">
-        <li>
-          <div class="bp-num">1</div>
-          <div class="bp-text">
-            <strong>Why Duplexes Outperform Standard Investment Properties</strong>
-            <span>A data-driven comparison of yields, vacancy rates, and capital growth between duplexes and single-dwelling rentals in Australia's hottest markets.</span>
-          </div>
-        </li>
-        <li>
-          <div class="bp-num">2</div>
-          <div class="bp-text">
-            <strong>How to Identify the Right Land, Size &amp; Zoning</strong>
-            <span>The exact site criteria Investment Bricks uses to filter thousands of listings — including minimum lot sizes, council zoning rules, and setback requirements by state.</span>
-          </div>
-        </li>
-        <li>
-          <div class="bp-num">3</div>
-          <div class="bp-text">
-            <strong>Finance Structures That Work for Duplex Buyers</strong>
-            <span>How to structure your loan so both dwellings are independently tenanted — plus strategies for using existing equity to fund your build.</span>
-          </div>
-        </li>
-        <li>
-          <div class="bp-num">4</div>
-          <div class="bp-text">
-            <strong>The Best States &amp; Suburbs for Duplex Development in 2025</strong>
-            <span>A state-by-state breakdown of locations with the most favourable planning rules, rental demand, and infrastructure investment right now.</span>
-          </div>
-        </li>
-        <li>
-          <div class="bp-num">5</div>
-          <div class="bp-text">
-            <strong>Step-by-Step: From Land Purchase to First Rental Income</strong>
-            <span>A full project timeline — from signing contracts and DA approval through to completion, tenant placement, and your first dual income week.</span>
-          </div>
-        </li>
-      </ul>
+      <div class="section-label" style="color:var(--orange);">Free Roadmap</div>
+      <h2>What's <span>Inside</span></h2>
+      <p class="intro-text">Five chapters that cut through the noise — so you know exactly how duplex investing works, what it costs, and where to start.</p>
+      <div class="chapter-grid">
+
+        <div class="chapter-card">
+          <div class="chapter-label">Chapter 1</div>
+          <div class="chapter-title">Why Duplexes Beat Standard Investment Properties</div>
+          <div class="chapter-desc">Side-by-side yield, vacancy, and capital growth numbers — duplexes vs. single-dwelling rentals in Australia's hottest markets.</div>
+        </div>
+
+        <div class="chapter-card">
+          <div class="chapter-label">Chapter 2</div>
+          <div class="chapter-title">How to Find the Right Land, Size &amp; Zoning</div>
+          <div class="chapter-desc">The exact site checklist Investment Bricks uses — lot sizes, council zoning rules, and setback requirements by state.</div>
+        </div>
+
+        <div class="chapter-card">
+          <div class="chapter-label">Chapter 3</div>
+          <div class="chapter-title">Finance Structures That Actually Work</div>
+          <div class="chapter-desc">How to structure your loan for dual tenancy — plus how to use existing equity so you don't touch your savings.</div>
+        </div>
+
+        <div class="chapter-card">
+          <div class="chapter-label">Chapter 4</div>
+          <div class="chapter-title">Best States &amp; Suburbs for Duplex Development in 2025</div>
+          <div class="chapter-desc">Where the planning rules, rental demand, and infrastructure investment align right now — broken down state by state.</div>
+        </div>
+
+        <div class="chapter-card">
+          <div class="chapter-label">Chapter 5</div>
+          <div class="chapter-title">From Land Purchase to First Rental Cheque — Step by Step</div>
+          <div class="chapter-desc">The full project timeline: contracts, DA approval, build, tenant placement, and your first dual income week — in plain language.</div>
+        </div>
+
+      </div>
     </div>
   </section>
 
