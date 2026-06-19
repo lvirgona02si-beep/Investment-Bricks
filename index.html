@@ -295,23 +295,39 @@
       background: var(--white);
       border-top: 1px solid #eee;
       border-bottom: 1px solid #eee;
-      padding: 18px 24px;
+      padding: 24px;
       display: flex;
       justify-content: center;
-      gap: 32px;
+      align-items: center;
       flex-wrap: wrap;
+      gap: 0;
     }
     .trust-item {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 13px;
-      font-weight: 600;
-      color: var(--charcoal);
-      letter-spacing: 0.03em;
+      text-align: center;
+      padding: 8px 32px;
+      border-right: 1px solid #e8e8e8;
     }
-    .trust-item .icon { font-size: 16px; }
-    .trust-item strong { color: var(--orange); }
+    .trust-item:last-child { border-right: none; }
+    @media (max-width: 600px) {
+      .trust-item { border-right: none; padding: 10px 20px; width: 50%; border-bottom: 1px solid #e8e8e8; }
+      .trust-item:nth-child(odd) { border-right: 1px solid #e8e8e8; }
+      .trust-item:last-child, .trust-item:nth-last-child(2):nth-child(odd) { border-bottom: none; }
+    }
+    .trust-stat {
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--orange);
+      line-height: 1;
+      margin-bottom: 4px;
+      letter-spacing: -0.01em;
+    }
+    .trust-label {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--mutedblue);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
 
     /* ── WHAT'S INSIDE ── */
     .content-section {
@@ -637,10 +653,22 @@
 
   <!-- TRUST STRIP -->
   <div class="trust-strip">
-    <div class="trust-item"><span class="icon">⭐</span><strong>5.0</strong>&nbsp;Google Rating</div>
-    <div class="trust-item"><span class="icon">🏠</span><strong>200+</strong>&nbsp;Properties Delivered</div>
-    <div class="trust-item"><span class="icon">🇦🇺</span>Australian Investors Trusted</div>
-    <div class="trust-item"><span class="icon">🔓</span>Independent &amp; Unbiased Advice</div>
+    <div class="trust-item">
+      <div class="trust-stat">5.0 ★</div>
+      <div class="trust-label">Google Rating</div>
+    </div>
+    <div class="trust-item">
+      <div class="trust-stat">200+</div>
+      <div class="trust-label">Properties Delivered</div>
+    </div>
+    <div class="trust-item">
+      <div class="trust-stat">100%</div>
+      <div class="trust-label">Independent Advice</div>
+    </div>
+    <div class="trust-item">
+      <div class="trust-stat">AU</div>
+      <div class="trust-label">Nationwide Coverage</div>
+    </div>
   </div>
 
   <!-- WHAT'S INSIDE -->
