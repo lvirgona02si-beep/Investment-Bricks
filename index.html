@@ -626,20 +626,20 @@
             <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:14px;">
               <div class="form-group" style="margin-bottom:0;">
                 <label>First Name</label>
-                <input type="text" id="fname" placeholder="First name" />
+                <input type="text" id="fname" placeholder="First name" required />
               </div>
               <div class="form-group" style="margin-bottom:0;">
                 <label>Last Name</label>
-                <input type="text" id="lname" placeholder="Last name" />
+                <input type="text" id="lname" placeholder="Last name" required />
               </div>
             </div>
             <div class="form-group">
               <label>Email Address</label>
-              <input type="email" id="email" placeholder="your@email.com" />
+              <input type="email" id="email" placeholder="your@email.com" required />
             </div>
             <div class="form-group">
               <label>Phone Number</label>
-              <input type="tel" id="phone" placeholder="04XX XXX XXX" />
+              <input type="tel" id="phone" placeholder="04XX XXX XXX" required />
             </div>
             <button class="submit-btn" onclick="submitForm()">Send My Roadmap →</button>
             <div class="privacy-note">🔒 Your details are 100% private. No spam, ever.</div>
@@ -784,34 +784,84 @@
   <!-- FORM (bottom — second instance) -->
   <section class="form-section form-section--bottom">
     <div class="section-label">Free Instant Access</div>
-    <h2 class="section-title">Ready to See the Full Roadmap?</h2>
+    <h2 class="section-title">Still on the Fence? Get the Roadmap.</h2>
     <div class="form-wrap">
       <div class="form-card">
         <div class="form-header">
-          <h3>Send Me the Roadmap</h3>
-          <p>Free. No obligation. Instant access.</p>
+          <h3>Get Your Free Roadmap</h3>
+          <p>Answer 3 quick questions — then instant access</p>
         </div>
         <div class="form-body">
-          <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:14px;">
-            <div class="form-group" style="margin-bottom:0;">
-              <label>First Name</label>
-              <input type="text" id="fname2" placeholder="First name" />
+
+          <div class="progress-bar">
+            <div class="progress-fill" id="progressFill2"></div>
+            <div class="step-dot active" id="dot1b">1</div>
+            <div class="step-dot" id="dot2b">2</div>
+            <div class="step-dot" id="dot3b">3</div>
+            <div class="step-dot" id="dot4b">4</div>
+          </div>
+
+          <!-- Step 1 -->
+          <div class="form-step active" id="step1b">
+            <p class="step-question">How much capital do you have available for investment?</p>
+            <div class="option-grid">
+              <button class="option-btn" onclick="selectOption2(this, 1)">Under $50k</button>
+              <button class="option-btn" onclick="selectOption2(this, 1)">$50k – $100k</button>
+              <button class="option-btn" onclick="selectOption2(this, 1)">$100k – $200k</button>
+              <button class="option-btn" onclick="selectOption2(this, 1)">$200k+</button>
             </div>
-            <div class="form-group" style="margin-bottom:0;">
-              <label>Last Name</label>
-              <input type="text" id="lname2" placeholder="Last name" />
+          </div>
+
+          <!-- Step 2 -->
+          <div class="form-step" id="step2b">
+            <p class="step-question">When are you looking to invest?</p>
+            <div class="option-grid">
+              <button class="option-btn" onclick="selectOption2(this, 2)">Within 3 months</button>
+              <button class="option-btn" onclick="selectOption2(this, 2)">3 – 6 months</button>
+              <button class="option-btn" onclick="selectOption2(this, 2)">6 – 12 months</button>
+              <button class="option-btn" onclick="selectOption2(this, 2)">12 months+</button>
             </div>
+            <button class="back-link" onclick="goBack2(1)">← Go back</button>
           </div>
-          <div class="form-group">
-            <label>Email Address</label>
-            <input type="email" id="email2" placeholder="your@email.com" />
+
+          <!-- Step 3 -->
+          <div class="form-step" id="step3b">
+            <p class="step-question">What's your primary investment goal?</p>
+            <div class="option-grid">
+              <button class="option-btn" onclick="selectOption2(this, 3)">Dual rental income</button>
+              <button class="option-btn" onclick="selectOption2(this, 3)">Capital growth</button>
+              <button class="option-btn" onclick="selectOption2(this, 3)">Land value uplift</button>
+              <button class="option-btn" onclick="selectOption2(this, 3)">All of the above</button>
+            </div>
+            <button class="back-link" onclick="goBack2(2)">← Go back</button>
           </div>
-          <div class="form-group">
-            <label>Phone Number</label>
-            <input type="tel" id="phone2" placeholder="04XX XXX XXX" />
+
+          <!-- Step 4 -->
+          <div class="form-step" id="step4b">
+            <p class="step-question">Where should we send your roadmap?</p>
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:14px;">
+              <div class="form-group" style="margin-bottom:0;">
+                <label>First Name</label>
+                <input type="text" id="fname2" placeholder="First name" required />
+              </div>
+              <div class="form-group" style="margin-bottom:0;">
+                <label>Last Name</label>
+                <input type="text" id="lname2" placeholder="Last name" required />
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Email Address</label>
+              <input type="email" id="email2" placeholder="your@email.com" required />
+            </div>
+            <div class="form-group">
+              <label>Phone Number</label>
+              <input type="tel" id="phone2" placeholder="04XX XXX XXX" required />
+            </div>
+            <button class="submit-btn" onclick="submitForm2()">Send My Roadmap →</button>
+            <div class="privacy-note" style="color:#aaa;">🔒 Your details are 100% private. No spam, ever.</div>
+            <button class="back-link" onclick="goBack2(3)">← Go back</button>
           </div>
-          <button class="submit-btn" onclick="submitForm2()">Send My Roadmap →</button>
-          <div class="privacy-note" style="color:#aaa;">🔒 Your details are 100% private. No spam, ever.</div>
+
         </div>
       </div>
     </div>
@@ -889,6 +939,37 @@
       });
     }
 
+    let currentStep2 = 1;
+    const answers2 = {};
+
+    function updateProgress2() {
+      const fills = [0, 0, 33.33, 66.66, 100];
+      document.getElementById('progressFill2').style.width = fills[currentStep2] + '%';
+      for (let i = 1; i <= 4; i++) {
+        const dot = document.getElementById('dot' + i + 'b');
+        dot.classList.remove('active', 'done');
+        if (i < currentStep2) dot.classList.add('done');
+        else if (i === currentStep2) dot.classList.add('active');
+      }
+    }
+
+    function showStep2(n) {
+      document.querySelectorAll('#step1b,#step2b,#step3b,#step4b').forEach(s => s.classList.remove('active'));
+      document.getElementById('step' + n + 'b').classList.add('active');
+      currentStep2 = n;
+      updateProgress2();
+    }
+
+    function selectOption2(btn, step) {
+      const grid = btn.closest('.option-grid');
+      grid.querySelectorAll('.option-btn').forEach(b => b.classList.remove('selected'));
+      btn.classList.add('selected');
+      answers2['step' + step] = btn.textContent.trim();
+      setTimeout(() => showStep2(step + 1), 280);
+    }
+
+    function goBack2(step) { showStep2(step); }
+
     function submitForm2() {
       const fname = document.getElementById('fname2').value.trim();
       const lname = document.getElementById('lname2').value.trim();
@@ -906,14 +987,16 @@
           lastName: lname,
           email: email,
           phone: phone,
-          capitalAvailable: '',
-          investmentTimeline: '',
-          investmentGoal: ''
+          capitalAvailable: answers2['step1'] || '',
+          investmentTimeline: answers2['step2'] || '',
+          investmentGoal: answers2['step3'] || ''
         })
       }).finally(() => {
         window.location.href = 'booking.html?name=' + encodeURIComponent(fname);
       });
     }
+
+    updateProgress2();
 
     function toggleFaq(el) {
       const item = el.parentElement;
