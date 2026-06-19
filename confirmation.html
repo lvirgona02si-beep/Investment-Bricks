@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="icon" type="image/png" href="favicon.png?v=2" />
   <title>You're Confirmed — Investment Bricks</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -27,18 +27,6 @@
       line-height: 1.8;
     }
 
-    /* ── TOP BAR ── */
-    .top-bar {
-      background: var(--peach);
-      padding: 10px 24px;
-      text-align: center;
-      color: var(--white);
-      font-size: 13px;
-      font-weight: 500;
-      letter-spacing: 0.03em;
-    }
-    .top-bar a { color: var(--white); text-decoration: none; font-weight: 700; }
-
     /* ── HEADER ── */
     header {
       background: var(--white);
@@ -48,7 +36,7 @@
       align-items: center;
       border-bottom: 1px solid #eee;
     }
-    header img { height: 56px; width: auto; object-fit: contain; }
+    header img { height: 52px; width: auto; object-fit: contain; }
 
     /* ── PROGRESS INDICATOR ── */
     .progress-nav {
@@ -107,7 +95,7 @@
 
     /* ── CONFIRMATION HERO ── */
     .confirm-hero {
-      background: linear-gradient(135deg, #1a3a00 0%, #2c5c00 60%, #1a2600 100%);
+      background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 60%, #4a2800 100%);
       padding: 56px 24px;
       text-align: center;
       position: relative;
@@ -117,7 +105,7 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: radial-gradient(circle at 60% 40%, rgba(253, 112, 20, 0.15) 0%, transparent 70%);
+      background: radial-gradient(circle at 60% 40%, rgba(253, 112, 20, 0.12) 0%, transparent 70%);
     }
     .confirm-hero-inner { position: relative; z-index: 1; }
     .confirm-check {
@@ -356,11 +344,11 @@
 
     /* ── FOOTER ── */
     footer {
-      background: var(--charcoal);
+      background: #1a1a1a;
       padding: 40px 24px;
       text-align: center;
     }
-    footer img { height: 60px; width: auto; object-fit: contain; margin-bottom: 16px; background: var(--white); padding: 8px 16px; border-radius: 8px; }
+    footer img { height: 52px; width: auto; object-fit: contain; margin-bottom: 16px; background: var(--white); padding: 8px 16px; border-radius: 6px; }
     .footer-links {
       display: flex;
       justify-content: center;
@@ -396,11 +384,6 @@
 </head>
 <body>
 
-  <!-- TOP BAR -->
-  <div class="top-bar">
-    📞 <a href="tel:0408827357">0408 827 357</a> &nbsp;|&nbsp; lucio@investmentbricks.com.au
-  </div>
-
   <!-- HEADER -->
   <header>
     <img src="Investment%20Bricks%20Logo.jpg" alt="Investment Bricks" />
@@ -431,7 +414,7 @@
     <div class="confirm-hero-inner">
       <div class="confirm-check">✓</div>
       <h1>You're confirmed, Investor!</h1>
-      <p>Your strategy call is locked in. Lucio will personally walk you through your duplex investment roadmap.</p>
+      <p>Your strategy call is locked in. Your Investment Bricks specialist will personally walk you through your duplex investment roadmap.</p>
     </div>
   </div>
 
@@ -439,7 +422,7 @@
   <div class="confirm-details-bar">
     <div class="cd-mini"><span class="icon">📅</span>Calendar invite sent to your inbox</div>
     <div class="cd-mini"><span class="icon">📄</span>roadmap <span>in your email</span></div>
-    <div class="cd-mini"><span class="icon">⏱️</span>30 min call <span>with Lucio</span></div>
+    <div class="cd-mini"><span class="icon">⏱️</span>30 min <span>strategy call</span></div>
     <div class="cd-mini"><span class="icon">🚫</span>Zero pressure <span>guarantee</span></div>
   </div>
 
@@ -469,7 +452,7 @@
         <div class="ns-num">3</div>
         <div class="ns-text">
           <strong>Join Your Strategy Call</strong>
-          <span>Lucio will call you at your chosen time. Have your questions ready — this is your 30 minutes to get real, unbiased answers from an industry expert.</span>
+          <span>Your specialist will call you at your chosen time. Have your questions ready — this is your 30 minutes to get real, unbiased answers from an industry expert.</span>
         </div>
       </div>
       <div class="next-step-card">
@@ -510,7 +493,7 @@
           <span class="prep-emoji">📱</span>
           <div>
             <strong>Have your phone ready</strong>
-            <p>Lucio will call you at the scheduled time. Make sure you're in a quiet spot — the call typically runs the full 30 minutes if you're engaged.</p>
+            <p>Your specialist will call you at the scheduled time. Make sure you're in a quiet spot — the call typically runs the full 30 minutes if you're engaged.</p>
           </div>
         </div>
       </div>
@@ -518,10 +501,10 @@
 
     <!-- Advisor Card -->
     <div class="advisor-card">
-      <div class="advisor-avatar">L</div>
+      <div class="advisor-avatar" style="font-size:18px;">IB</div>
       <div class="advisor-info">
-        <h4>Lucio — Investment Bricks</h4>
-        <p>Your dedicated duplex investment specialist. Lucio has helped hundreds of Australian investors access off-market duplex opportunities, structure their finance, and take their key with confidence.</p>
+        <h4>Investment Bricks</h4>
+        <p>Your dedicated duplex investment specialists. Investment Bricks has helped hundreds of Australian investors access off-market duplex opportunities, structure their finance, and take their key with confidence.</p>
         <div class="advisor-contact">
           <a href="tel:0408827357">📞 0408 827 357</a>
           <a href="mailto:lucio@investmentbricks.com.au">✉️ lucio@investmentbricks.com.au</a>
@@ -556,7 +539,7 @@
       <a href="#">Terms of Use</a>
       <a href="https://investmentbricks.com.au" target="_blank">investmentbricks.com.au</a>
     </div>
-    <p>Lucio: 0408 827 357 | lucio@investmentbricks.com.au | Adelaide, Australia</p>
+    <p>0408 827 357 | lucio@investmentbricks.com.au | Adelaide, Australia</p>
     <p style="margin-top:8px;">© 2025 Investment Bricks. All rights reserved. New Property Specialists.</p>
   </footer>
 
