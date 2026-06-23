@@ -146,86 +146,12 @@
     }
     .form-body { padding: 28px; }
 
-    /* Progress */
-    .progress-bar {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 28px;
-      position: relative;
-    }
-    .progress-bar::before {
-      content: '';
-      position: absolute;
-      top: 14px;
-      left: 10%;
-      right: 10%;
-      height: 2px;
-      background: #e8e8e8;
-      z-index: 0;
-    }
-    .progress-fill {
-      position: absolute;
-      top: 14px;
-      left: 10%;
-      height: 2px;
-      background: var(--orange);
-      z-index: 1;
-      transition: width 0.4s ease;
-      width: 0%;
-    }
-    .step-dot {
-      width: 28px;
-      height: 28px;
-      border-radius: 50%;
-      background: #e8e8e8;
-      border: 2px solid #e8e8e8;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 11px;
-      font-weight: 700;
-      color: #aaa;
-      position: relative;
-      z-index: 2;
-      transition: all 0.3s;
-    }
-    .step-dot.active { background: var(--orange); border-color: var(--orange); color: var(--white); }
-    .step-dot.done { background: var(--orange); border-color: var(--orange); color: var(--white); }
-
-    .form-step { display: none; }
-    .form-step.active { display: block; }
-
     .step-question {
       font-size: 15px;
       font-weight: 700;
       color: var(--charcoal);
       margin-bottom: 16px;
       line-height: 1.4;
-    }
-
-    .option-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
-      margin-bottom: 20px;
-    }
-    .option-btn {
-      padding: 13px 10px;
-      border: 2px solid #e8e8e8;
-      border-radius: 6px;
-      background: var(--white);
-      font-family: 'Montserrat', Arial, sans-serif;
-      font-size: 13px;
-      font-weight: 600;
-      color: var(--charcoal);
-      cursor: pointer;
-      text-align: center;
-      transition: all 0.2s;
-    }
-    .option-btn:hover, .option-btn.selected {
-      border-color: var(--orange);
-      background: #FFF5EE;
-      color: var(--orange);
     }
 
     .form-group { margin-bottom: 14px; }
@@ -269,19 +195,6 @@
     }
     .submit-btn:hover { background: #e05f00; transform: translateY(-1px); }
     .submit-btn:active { transform: translateY(0); }
-
-    .back-link {
-      display: block;
-      text-align: center;
-      margin-top: 12px;
-      font-size: 13px;
-      color: var(--mutedblue);
-      cursor: pointer;
-      background: none;
-      border: none;
-      font-family: 'Montserrat', Arial, sans-serif;
-    }
-    .back-link:hover { color: var(--orange); text-decoration: underline; }
 
     .privacy-note {
       font-size: 12px;
@@ -573,87 +486,31 @@
       <div class="form-card">
         <div class="form-header">
           <h3>Get Your Free Roadmap</h3>
-          <p>Answer 3 quick questions — then instant access</p>
+          <p>Enter your details for instant access</p>
         </div>
         <div class="form-body">
 
-          <div class="progress-bar">
-            <div class="progress-fill" id="progressFill"></div>
-            <div class="step-dot active" id="dot1">1</div>
-            <div class="step-dot" id="dot2">2</div>
-            <div class="step-dot" id="dot3">3</div>
-            <div class="step-dot" id="dot4">4</div>
-          </div>
-
-          <!-- Step 1 -->
-          <div class="form-step active" id="step1">
-            <p class="step-question">How much capital do you have available for investment?</p>
-            <div class="option-grid">
-              <button class="option-btn" onclick="selectOption(this, 1)">Under $50k</button>
-              <button class="option-btn" onclick="selectOption(this, 1)">$50k – $100k</button>
-              <button class="option-btn" onclick="selectOption(this, 1)">$100k – $200k</button>
-              <button class="option-btn" onclick="selectOption(this, 1)">$200k+</button>
+          <p class="step-question">Where should we send your roadmap?</p>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:14px;">
+            <div class="form-group" style="margin-bottom:0;">
+              <label>First Name</label>
+              <input type="text" id="fname" placeholder="First name" required />
+            </div>
+            <div class="form-group" style="margin-bottom:0;">
+              <label>Last Name</label>
+              <input type="text" id="lname" placeholder="Last name" required />
             </div>
           </div>
-
-          <!-- Step 2 -->
-          <div class="form-step" id="step2">
-            <p class="step-question">When are you looking to invest?</p>
-            <div class="option-grid">
-              <button class="option-btn" onclick="selectOption(this, 2)">Within 3 months</button>
-              <button class="option-btn" onclick="selectOption(this, 2)">3 – 6 months</button>
-              <button class="option-btn" onclick="selectOption(this, 2)">6 – 12 months</button>
-              <button class="option-btn" onclick="selectOption(this, 2)">12 months+</button>
-            </div>
-            <button class="back-link" onclick="goBack(1)">← Go back</button>
+          <div class="form-group">
+            <label>Email Address</label>
+            <input type="email" id="email" placeholder="your@email.com" required />
           </div>
-
-          <!-- Step 3 -->
-          <div class="form-step" id="step3">
-            <p class="step-question">What's your primary investment goal?</p>
-            <div class="option-grid">
-              <button class="option-btn" onclick="selectOption(this, 3)">Dual rental income</button>
-              <button class="option-btn" onclick="selectOption(this, 3)">Capital growth</button>
-              <button class="option-btn" onclick="selectOption(this, 3)">Land value uplift</button>
-              <button class="option-btn" onclick="selectOption(this, 3)">All of the above</button>
-            </div>
-            <button class="back-link" onclick="goBack(2)">← Go back</button>
+          <div class="form-group">
+            <label>Phone Number</label>
+            <input type="tel" id="phone" placeholder="04XX XXX XXX" required />
           </div>
-
-          <!-- Step 4 -->
-          <div class="form-step" id="step4">
-            <p class="step-question">Where should we send your roadmap?</p>
-            <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:14px;">
-              <div class="form-group" style="margin-bottom:0;">
-                <label>First Name</label>
-                <input type="text" id="fname" placeholder="First name" required />
-              </div>
-              <div class="form-group" style="margin-bottom:0;">
-                <label>Last Name</label>
-                <input type="text" id="lname" placeholder="Last name" required />
-              </div>
-            </div>
-            <div class="form-group">
-              <label>Email Address</label>
-              <input type="email" id="email" placeholder="your@email.com" required />
-            </div>
-            <div class="form-group">
-              <label>Phone Number</label>
-              <input type="tel" id="phone" placeholder="04XX XXX XXX" required />
-            </div>
-            <button class="submit-btn" onclick="submitForm()">Send My Roadmap →</button>
-            <div class="privacy-note">🔒 Your details are 100% private. No spam, ever.</div>
-            <button class="back-link" onclick="goBack(3)">← Go back</button>
-          </div>
-
-          <!-- DQ Screen -->
-          <div class="form-step" id="step-dq">
-            <div style="text-align:center; padding:10px 0;">
-              <p class="step-question" style="color:#e05a1b; margin-bottom:16px;">Not Quite the Right Fit</p>
-              <p style="color:#ccc; line-height:1.7; margin-bottom:24px;">Our program is designed for investors with a minimum of <strong>$50k</strong> in usable capital or equity. We'd love to work with you once you're in a stronger position — feel free to revisit us down the track.</p>
-              <button class="back-link" onclick="goBack(1)" style="display:inline-block;">← Start Over</button>
-            </div>
-          </div>
+          <button class="submit-btn" onclick="submitForm()">Send My Roadmap →</button>
+          <div class="privacy-note">🔒 Your details are 100% private. No spam, ever.</div>
 
         </div>
       </div>
@@ -798,87 +655,31 @@
       <div class="form-card">
         <div class="form-header">
           <h3>Get Your Free Roadmap</h3>
-          <p>Answer 3 quick questions — then instant access</p>
+          <p>Enter your details for instant access</p>
         </div>
         <div class="form-body">
 
-          <div class="progress-bar">
-            <div class="progress-fill" id="progressFill2"></div>
-            <div class="step-dot active" id="dot1b">1</div>
-            <div class="step-dot" id="dot2b">2</div>
-            <div class="step-dot" id="dot3b">3</div>
-            <div class="step-dot" id="dot4b">4</div>
-          </div>
-
-          <!-- Step 1 -->
-          <div class="form-step active" id="step1b">
-            <p class="step-question">How much capital do you have available for investment?</p>
-            <div class="option-grid">
-              <button class="option-btn" onclick="selectOption2(this, 1)">Under $50k</button>
-              <button class="option-btn" onclick="selectOption2(this, 1)">$50k – $100k</button>
-              <button class="option-btn" onclick="selectOption2(this, 1)">$100k – $200k</button>
-              <button class="option-btn" onclick="selectOption2(this, 1)">$200k+</button>
+          <p class="step-question">Where should we send your roadmap?</p>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:14px;">
+            <div class="form-group" style="margin-bottom:0;">
+              <label>First Name</label>
+              <input type="text" id="fname2" placeholder="First name" required />
+            </div>
+            <div class="form-group" style="margin-bottom:0;">
+              <label>Last Name</label>
+              <input type="text" id="lname2" placeholder="Last name" required />
             </div>
           </div>
-
-          <!-- Step 2 -->
-          <div class="form-step" id="step2b">
-            <p class="step-question">When are you looking to invest?</p>
-            <div class="option-grid">
-              <button class="option-btn" onclick="selectOption2(this, 2)">Within 3 months</button>
-              <button class="option-btn" onclick="selectOption2(this, 2)">3 – 6 months</button>
-              <button class="option-btn" onclick="selectOption2(this, 2)">6 – 12 months</button>
-              <button class="option-btn" onclick="selectOption2(this, 2)">12 months+</button>
-            </div>
-            <button class="back-link" onclick="goBack2(1)">← Go back</button>
+          <div class="form-group">
+            <label>Email Address</label>
+            <input type="email" id="email2" placeholder="your@email.com" required />
           </div>
-
-          <!-- Step 3 -->
-          <div class="form-step" id="step3b">
-            <p class="step-question">What's your primary investment goal?</p>
-            <div class="option-grid">
-              <button class="option-btn" onclick="selectOption2(this, 3)">Dual rental income</button>
-              <button class="option-btn" onclick="selectOption2(this, 3)">Capital growth</button>
-              <button class="option-btn" onclick="selectOption2(this, 3)">Land value uplift</button>
-              <button class="option-btn" onclick="selectOption2(this, 3)">All of the above</button>
-            </div>
-            <button class="back-link" onclick="goBack2(2)">← Go back</button>
+          <div class="form-group">
+            <label>Phone Number</label>
+            <input type="tel" id="phone2" placeholder="04XX XXX XXX" required />
           </div>
-
-          <!-- Step 4 -->
-          <div class="form-step" id="step4b">
-            <p class="step-question">Where should we send your roadmap?</p>
-            <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:14px;">
-              <div class="form-group" style="margin-bottom:0;">
-                <label>First Name</label>
-                <input type="text" id="fname2" placeholder="First name" required />
-              </div>
-              <div class="form-group" style="margin-bottom:0;">
-                <label>Last Name</label>
-                <input type="text" id="lname2" placeholder="Last name" required />
-              </div>
-            </div>
-            <div class="form-group">
-              <label>Email Address</label>
-              <input type="email" id="email2" placeholder="your@email.com" required />
-            </div>
-            <div class="form-group">
-              <label>Phone Number</label>
-              <input type="tel" id="phone2" placeholder="04XX XXX XXX" required />
-            </div>
-            <button class="submit-btn" onclick="submitForm2()">Send My Roadmap →</button>
-            <div class="privacy-note" style="color:#aaa;">🔒 Your details are 100% private. No spam, ever.</div>
-            <button class="back-link" onclick="goBack2(3)">← Go back</button>
-          </div>
-
-          <!-- DQ Screen -->
-          <div class="form-step" id="step-dqb">
-            <div style="text-align:center; padding:10px 0;">
-              <p class="step-question" style="color:#e05a1b; margin-bottom:16px;">Not Quite the Right Fit</p>
-              <p style="color:#ccc; line-height:1.7; margin-bottom:24px;">Our program is designed for investors with a minimum of <strong>$50k</strong> in usable capital or equity. We'd love to work with you once you're in a stronger position — feel free to revisit us down the track.</p>
-              <button class="back-link" onclick="goBack2(1)" style="display:inline-block;">← Start Over</button>
-            </div>
-          </div>
+          <button class="submit-btn" onclick="submitForm2()">Send My Roadmap →</button>
+          <div class="privacy-note" style="color:#aaa;">🔒 Your details are 100% private. No spam, ever.</div>
 
         </div>
       </div>
@@ -898,48 +699,6 @@
   </footer>
 
   <script>
-    let currentStep = 1;
-    const answers = {};
-
-    function updateProgress() {
-      const fills = [0, 0, 33.33, 66.66, 100];
-      document.getElementById('progressFill').style.width = fills[currentStep] + '%';
-      for (let i = 1; i <= 4; i++) {
-        const dot = document.getElementById('dot' + i);
-        dot.classList.remove('active', 'done');
-        if (i < currentStep) dot.classList.add('done');
-        else if (i === currentStep) dot.classList.add('active');
-      }
-    }
-
-    function showStep(n) {
-      document.querySelectorAll('.form-step').forEach(s => s.classList.remove('active'));
-      document.getElementById('step' + n).classList.add('active');
-      currentStep = n;
-      updateProgress();
-    }
-
-    function showDQ() {
-      document.querySelectorAll('.form-step').forEach(s => s.classList.remove('active'));
-      document.getElementById('step-dq').classList.add('active');
-    }
-
-    function selectOption(btn, step) {
-      const grid = btn.closest('.option-grid');
-      grid.querySelectorAll('.option-btn').forEach(b => b.classList.remove('selected'));
-      btn.classList.add('selected');
-      answers['step' + step] = btn.textContent.trim();
-      if (step === 1 && btn.textContent.trim() === 'Under $50k') {
-        setTimeout(() => showDQ(), 280);
-      } else {
-        setTimeout(() => showStep(step + 1), 280);
-      }
-    }
-
-    function goBack(step) {
-      showStep(step);
-    }
-
     function submitForm() {
       const fname = document.getElementById('fname').value.trim();
       const lname = document.getElementById('lname').value.trim();
@@ -952,59 +711,11 @@
       fetch('https://services.leadconnectorhq.com/hooks/mxpdI2F8FTvzLKHkyp6W/webhook-trigger/3ac7e27c-d581-4269-b61e-bd2a2e814917', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          firstName: fname,
-          lastName: lname,
-          email: email,
-          phone: phone,
-          capitalAvailable: answers['step1'] || '',
-          investmentTimeline: answers['step2'] || '',
-          investmentGoal: answers['step3'] || ''
-        })
+        body: JSON.stringify({ firstName: fname, lastName: lname, email: email, phone: phone })
       }).finally(() => {
         window.location.href = 'booking.html?name=' + encodeURIComponent(fname);
       });
     }
-
-    let currentStep2 = 1;
-    const answers2 = {};
-
-    function updateProgress2() {
-      const fills = [0, 0, 33.33, 66.66, 100];
-      document.getElementById('progressFill2').style.width = fills[currentStep2] + '%';
-      for (let i = 1; i <= 4; i++) {
-        const dot = document.getElementById('dot' + i + 'b');
-        dot.classList.remove('active', 'done');
-        if (i < currentStep2) dot.classList.add('done');
-        else if (i === currentStep2) dot.classList.add('active');
-      }
-    }
-
-    function showStep2(n) {
-      document.querySelectorAll('#step1b,#step2b,#step3b,#step4b,#step-dqb').forEach(s => s.classList.remove('active'));
-      document.getElementById('step' + n + 'b').classList.add('active');
-      currentStep2 = n;
-      updateProgress2();
-    }
-
-    function showDQ2() {
-      document.querySelectorAll('#step1b,#step2b,#step3b,#step4b,#step-dqb').forEach(s => s.classList.remove('active'));
-      document.getElementById('step-dqb').classList.add('active');
-    }
-
-    function selectOption2(btn, step) {
-      const grid = btn.closest('.option-grid');
-      grid.querySelectorAll('.option-btn').forEach(b => b.classList.remove('selected'));
-      btn.classList.add('selected');
-      answers2['step' + step] = btn.textContent.trim();
-      if (step === 1 && btn.textContent.trim() === 'Under $50k') {
-        setTimeout(() => showDQ2(), 280);
-      } else {
-        setTimeout(() => showStep2(step + 1), 280);
-      }
-    }
-
-    function goBack2(step) { showStep2(step); }
 
     function submitForm2() {
       const fname = document.getElementById('fname2').value.trim();
@@ -1018,28 +729,16 @@
       fetch('https://services.leadconnectorhq.com/hooks/mxpdI2F8FTvzLKHkyp6W/webhook-trigger/3ac7e27c-d581-4269-b61e-bd2a2e814917', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          firstName: fname,
-          lastName: lname,
-          email: email,
-          phone: phone,
-          capitalAvailable: answers2['step1'] || '',
-          investmentTimeline: answers2['step2'] || '',
-          investmentGoal: answers2['step3'] || ''
-        })
+        body: JSON.stringify({ firstName: fname, lastName: lname, email: email, phone: phone })
       }).finally(() => {
         window.location.href = 'booking.html?name=' + encodeURIComponent(fname);
       });
     }
 
-    updateProgress2();
-
     function toggleFaq(el) {
       const item = el.parentElement;
       item.classList.toggle('open');
     }
-
-    updateProgress();
   </script>
 
 </body>
