@@ -646,6 +646,15 @@
             <button class="back-link" onclick="goBack(3)">← Go back</button>
           </div>
 
+          <!-- DQ Screen -->
+          <div class="form-step" id="step-dq">
+            <div style="text-align:center; padding:10px 0;">
+              <p class="step-question" style="color:#e05a1b; margin-bottom:16px;">Not Quite the Right Fit</p>
+              <p style="color:#ccc; line-height:1.7; margin-bottom:24px;">Our program is designed for investors with a minimum of <strong>$50k</strong> in usable capital or equity. We'd love to work with you once you're in a stronger position — feel free to revisit us down the track.</p>
+              <button class="back-link" onclick="goBack(1)" style="display:inline-block;">← Start Over</button>
+            </div>
+          </div>
+
         </div>
       </div>
     </div>
@@ -862,6 +871,15 @@
             <button class="back-link" onclick="goBack2(3)">← Go back</button>
           </div>
 
+          <!-- DQ Screen -->
+          <div class="form-step" id="step-dqb">
+            <div style="text-align:center; padding:10px 0;">
+              <p class="step-question" style="color:#e05a1b; margin-bottom:16px;">Not Quite the Right Fit</p>
+              <p style="color:#ccc; line-height:1.7; margin-bottom:24px;">Our program is designed for investors with a minimum of <strong>$50k</strong> in usable capital or equity. We'd love to work with you once you're in a stronger position — feel free to revisit us down the track.</p>
+              <button class="back-link" onclick="goBack2(1)" style="display:inline-block;">← Start Over</button>
+            </div>
+          </div>
+
         </div>
       </div>
     </div>
@@ -901,12 +919,21 @@
       updateProgress();
     }
 
+    function showDQ() {
+      document.querySelectorAll('.form-step').forEach(s => s.classList.remove('active'));
+      document.getElementById('step-dq').classList.add('active');
+    }
+
     function selectOption(btn, step) {
       const grid = btn.closest('.option-grid');
       grid.querySelectorAll('.option-btn').forEach(b => b.classList.remove('selected'));
       btn.classList.add('selected');
       answers['step' + step] = btn.textContent.trim();
-      setTimeout(() => showStep(step + 1), 280);
+      if (step === 1 && btn.textContent.trim() === 'Under $50k') {
+        setTimeout(() => showDQ(), 280);
+      } else {
+        setTimeout(() => showStep(step + 1), 280);
+      }
     }
 
     function goBack(step) {
@@ -954,10 +981,15 @@
     }
 
     function showStep2(n) {
-      document.querySelectorAll('#step1b,#step2b,#step3b,#step4b').forEach(s => s.classList.remove('active'));
+      document.querySelectorAll('#step1b,#step2b,#step3b,#step4b,#step-dqb').forEach(s => s.classList.remove('active'));
       document.getElementById('step' + n + 'b').classList.add('active');
       currentStep2 = n;
       updateProgress2();
+    }
+
+    function showDQ2() {
+      document.querySelectorAll('#step1b,#step2b,#step3b,#step4b,#step-dqb').forEach(s => s.classList.remove('active'));
+      document.getElementById('step-dqb').classList.add('active');
     }
 
     function selectOption2(btn, step) {
@@ -965,7 +997,11 @@
       grid.querySelectorAll('.option-btn').forEach(b => b.classList.remove('selected'));
       btn.classList.add('selected');
       answers2['step' + step] = btn.textContent.trim();
-      setTimeout(() => showStep2(step + 1), 280);
+      if (step === 1 && btn.textContent.trim() === 'Under $50k') {
+        setTimeout(() => showDQ2(), 280);
+      } else {
+        setTimeout(() => showStep2(step + 1), 280);
+      }
     }
 
     function goBack2(step) { showStep2(step); }
